@@ -1,6 +1,8 @@
 package kz.scan.selina.dto;
 
 
+import java.util.Date;
+
 /**
  * Объект передачи данных для клиента. Модель собранной информации
  */
@@ -20,5 +22,11 @@ public class AttackDto {
    * Скрипт совершенной атаки
    */
   String attackScript;
+
+  /**
+   * Excecuted date
+   */
+  Date excecutedDate;
+
 
 }
