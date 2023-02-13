@@ -3,8 +3,6 @@ package kz.scan.selina.dto;
 
 import kz.scan.selina.enums.VulnerabilitySeverity;
 import lombok.Data;
-import lombok.ToString;
-import lombok.experimental.Accessors;
 
 import java.util.Date;
 
@@ -19,7 +17,7 @@ public class AttackDto {
   /**
    * Идентификатор атаки
    */
-  long attackId;
+  public long attackId;
 
   /**
    * Название / Тип атакуемого скрипта
@@ -50,8 +48,6 @@ public class AttackDto {
     attackDto.attackScript = rndStr(50);
     attackDto.executedDate = rndDate();
     attackDto.vulnerabilitySeverity = rndEnum(VulnerabilitySeverity.class);
-
-    System.out.println(attackDto);
 
     return new AttackDto();
   }
