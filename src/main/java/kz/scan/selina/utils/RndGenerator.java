@@ -4,6 +4,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RndGenerator {
 
@@ -12,16 +14,32 @@ public class RndGenerator {
   }
 
   public static String rndStr() {
-    byte[] array = new byte[12];  // length is bounded by given number
-    new Random().nextBytes(array);
-    return new String(array, StandardCharsets.UTF_8);
+    char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < 12; i++) {
+      sb.append(chars[new Random().nextInt(chars.length)]);
+    }
+
+    return sb.toString();
   }
 
   public static String rndStr(int length) {
-    byte[] array = new byte[length];  // length is bounded by given number
-    new Random().nextBytes(array);
-    return new String(array, StandardCharsets.UTF_8);
+    char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < length; i++) {
+      sb.append(chars[new Random().nextInt(chars.length)]);
+    }
+
+    return sb.toString();
+//    return Stream.of(new Character[length])
+//      .map(ch -> chars[new Random().nextInt(chars.length)])
+//      .collect(Collectors.toList())
+//      .to
+//      .toString();
   }
+
 
   public static Date rndDate() {
     return new Date(ThreadLocalRandom.current().nextInt());

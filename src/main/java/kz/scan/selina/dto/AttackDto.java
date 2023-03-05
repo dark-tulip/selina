@@ -49,6 +49,6 @@ public class AttackDto {
     attackDto.executedDate = rndDate();
     attackDto.vulnerabilitySeverity = rndEnum(VulnerabilitySeverity.class);
 
-    return new AttackDto();
+    return attackDto;
   }
 }

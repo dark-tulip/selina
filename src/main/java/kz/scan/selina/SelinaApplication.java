@@ -10,7 +10,8 @@ public class SelinaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SelinaApplication.class, args);
-		rndAttackDto();
+		System.out.println(rndAttackDto());
 	}
+
 
 }
