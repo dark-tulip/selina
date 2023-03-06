@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet author="user" id="003">
+        <sql>
+            INSERT INTO currency (currency_shortname, multiplier)
+            VALUES ('USD', 1.0),
+            ('KZT', 0.022),
+            ('RUS', 0.014000);;
+
+
+            INSERT INTO account(account_id, username)
+            VALUES (100, 'user1'),
+            (101, 'user2'),
+            (102, 'user3');
+
+
+            INSERT INTO account_limit
+            (account_id, expense_category, limit_sum, limit_currency_shortname)
+            VALUES
+            (100, 'PRODUCT', 1000, 'USD');
+<!--            (100, 'PRODUCT', 99, 'USD'),-->
+<!--            (100, 'PRODUCT', 9, 'USD'),-->
+<!--            (100, 'SERVICE', 999, 'USD'),-->
+<!--            (100, 'PRODUCT', 8888, 'KZT'),-->
+<!--            (100, 'SERVICE', 8888, 'KZT');;-->
+
+
+<!--            INSERT INTO transaction-->
+<!--            (account_from, account_to, currency_shortname, transaction_sum, expense_category)-->
+<!--            VALUES-->
+<!--            (100, 101, 'USD', 500, 'PRODUCT'),-->
+<!--            (100, 101, 'USD', 499, 'PRODUCT');;-->
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet author="user" id="001">
+        <sql>
+            CREATE TABLE account (
+            account_id bigserial PRIMARY KEY,
+            username   varchar(20)
+            );;
+        </sql>
+        <sql>
+            CREATE TABLE currency (
+            currency_shortname varchar(3) PRIMARY KEY,
+            multiplier         numeric
+            );;
+        </sql>
+        <sql>
+            CREATE TABLE account_limit (
+            limit_id                 bigserial PRIMARY KEY,
+            account_id               bigint REFERENCES account(account_id),
+            expense_category         varchar(7),
+            limit_sum                numeric(10, 2) default 0,
+            limit_datetime           timestamp NOT NULL default current_timestamp(2),
+            limit_currency_shortname varchar(3) REFERENCES currency(currency_shortname)
+            );;
+        </sql>
+        <sql>
+            CREATE TABLE transaction (
+            transaction_id     bigserial   PRIMARY KEY,
+            account_from       bigint      REFERENCES account(account_id),
+            account_to         bigint      REFERENCES account(account_id),
+            currency_shortname varchar(3)  REFERENCES currency(currency_shortname),
+            transaction_sum    numeric(10, 2),
+            expense_category   varchar(7),
+            datetime           timestamp default current_timestamp(2),
+            limit_exceeded     boolean
+            );;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.1.0'
+	id "org.liquibase.gradle" version "2.1.1"
 }
 
 group = 'kz.scan'
@@ -16,8 +17,12 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compileOnly 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.postgresql:postgresql:42.3.0'
+
+	implementation 'org.liquibase:liquibase-core:4.18.0'
+	runtimeOnly 'org.liquibase:liquibase-core:4.18.0'
+
+	compileOnly 'org.projectlombok:lombok:1.18.22'
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
