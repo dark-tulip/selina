@@ -3,6 +3,7 @@ package kz.scan.selina.dto;
 
 import kz.scan.selina.enums.VulnerabilitySeverity;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.Date;
 
@@ -12,6 +13,7 @@ import static kz.scan.selina.utils.RndGenerator.*;
  * Объект передачи данных для клиента. Модель собранной информации
  */
 @Data
+@Accessors
 public class AttackDto {
 
   /**
@@ -22,22 +24,22 @@ public class AttackDto {
   /**
    * Название / Тип атакуемого скрипта
    */
-  String attackName;
+  public String attackName;
 
   /**
    * Скрипт совершенной атаки
    */
-  String attackScript;
+  public String attackScript;
 
   /**
    * Executed date
    */
-  Date executedDate;
+  public Date executedDate;
 
   /**
    * Серъезность уязвимости
    */
-  VulnerabilitySeverity vulnerabilitySeverity;
+  public VulnerabilitySeverity vulnerabilitySeverity;
 
 
   public static AttackDto rndAttackDto() {
