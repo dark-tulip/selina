@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet author="user" id="003">
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 1, '</textarea><img src=\"1\" onerror=\"alert(''XSS bro'')\">');
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

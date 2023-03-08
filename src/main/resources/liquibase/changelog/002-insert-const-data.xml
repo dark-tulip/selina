@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet author="user" id="002">
+        <sql>
+            INSERT INTO attack(attack_name)
+            VALUES ('SQL injection'),
+            ('XSS attack');
+        </sql>
+        <sql>
+            INSERT INTO severity(severity_type)
+            VALUES ('HIGH'),
+            ('MEDIUM'),
+            ('LOW');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

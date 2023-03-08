@@ -1,7 +1,6 @@
 package kz.scan.selina.model;
 
 
-import kz.scan.selina.enums.VulnerabilitySeverity;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -13,7 +12,7 @@ public class AttackScript {
   /**
    * Идентификатор атаки
    */
-  long attackScriptId;
+  long scriptId;
 
   /**
    * Идентификатор атаки
@@ -23,7 +22,7 @@ public class AttackScript {
   /**
    * Серъезность выполненного скрипта
    */
-  long vulnerabilitySeverityId;
+  long severityId;
 
   /**
    * Cодержимое скрипта

@@ -4,20 +4,27 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
-
     <changeSet author="user" id="001">
         <sql>
-            CREATE TABLE attack_names (
-                attack_id BIGINT PRIMARY KEY,
-                attack_name VARCHAR(255)
+            CREATE TABLE attack (
+                attack_id   BIGSERIAL PRIMARY KEY,
+                attack_name VARCHAR(50)
             );
         </sql>
         <sql>
-            CREATE TABLE attack_scripts (
-                attack_id BIGINT PRIMARY KEY,
-                vulnerability_severity VARCHAR(255),
-                attack_script TEXT,
-                FOREIGN KEY (attack_id) REFERENCES attack_names(attack_id)
+            CREATE TABLE severity (
+                severity_id   BIGSERIAL PRIMARY KEY,
+                severity_type VARCHAR(50)
+            );
+        </sql>
+        <sql>
+            CREATE TABLE attack_script (
+                script_id               BIGSERIAL PRIMARY KEY,
+                attack_id               BIGINT,
+                severity_id             BIGINT,
+                attack_script           VARCHAR,
+                FOREIGN KEY (attack_id) REFERENCES attack(attack_id),
+                FOREIGN KEY (attack_id) REFERENCES severity(severity_id)
             );
         </sql>
     </changeSet>
