@@ -19,7 +19,7 @@ public class AttackDto {
   /**
    * Идентификатор атаки
    */
-  public long attackId;
+  public long scriptId;
 
   /**
    * Название / Тип атакуемого скрипта
@@ -34,22 +34,22 @@ public class AttackDto {
   /**
    * Executed date
    */
-  public Date executedDate;
+  public Date executedDate = new Date();
 
   /**
    * Серъезность уязвимости
    */
-  public VulnerabilitySeverity vulnerabilitySeverity;
+  public VulnerabilitySeverity severityType;
 
 
   public static AttackDto rndAttackDto() {
     AttackDto attackDto = new AttackDto();
 
-    attackDto.attackId = rndInt();
+    attackDto.scriptId = rndInt();
     attackDto.attackName = rndStr();
     attackDto.attackScript = rndStr(50);
     attackDto.executedDate = rndDate();
-    attackDto.vulnerabilitySeverity = rndEnum(VulnerabilitySeverity.class);
+    attackDto.severityType = rndEnum(VulnerabilitySeverity.class);
 
     return attackDto;
   }

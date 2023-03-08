@@ -8,8 +8,8 @@ import java.util.Scanner;
 @SpringBootTest
 class SelinaApplicationTests {
 
-//	@Test
-//	void contextLoads() {
-//	}
+	@Test
+	void contextLoads() {
+	}
 
 }
