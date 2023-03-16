@@ -14,7 +14,7 @@ import static kz.scan.selina.utils.RndGenerator.*;
  */
 @Data
 @Accessors
-public class AttackDto {
+public class ScriptHolderDto {
 
   /**
    * Идентификатор атаки
@@ -42,15 +42,15 @@ public class AttackDto {
   public VulnerabilitySeverity severityType;
 
 
-  public static AttackDto rndAttackDto() {
-    AttackDto attackDto = new AttackDto();
+  public static ScriptHolderDto rndAttackDto() {
+    ScriptHolderDto scriptHolderDto = new ScriptHolderDto();
 
-    attackDto.scriptId = rndInt();
-    attackDto.attackName = rndStr();
-    attackDto.attackScript = rndStr(50);
-    attackDto.executedDate = rndDate();
-    attackDto.severityType = rndEnum(VulnerabilitySeverity.class);
+    scriptHolderDto.scriptId = rndInt();
+    scriptHolderDto.attackName = rndStr();
+    scriptHolderDto.attackScript = rndStr(50);
+    scriptHolderDto.executedDate = rndDate();
+    scriptHolderDto.severityType = rndEnum(VulnerabilitySeverity.class);
 
-    return attackDto;
+    return scriptHolderDto;
   }
 }

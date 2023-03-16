@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import static kz.scan.selina.config.Migration.runMigration;
-import static kz.scan.selina.dto.AttackDto.rndAttackDto;
+import static kz.scan.selina.dto.ScriptHolderDto.rndAttackDto;
 
 @SpringBootApplication
 public class SelinaApplication {

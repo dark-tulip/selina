@@ -1,5 +1,7 @@
 package kz.scan.selina.repo;
 
+import kz.scan.selina.controller.SelectFilters;
+
 import java.util.List;
 
 /**
@@ -8,7 +10,7 @@ import java.util.List;
  */
 public interface Repository<T, K> {
 
-  T select(K objectId);
+  List<T> select(SelectFilters objectId);
 
   List<T> selectAll();
 

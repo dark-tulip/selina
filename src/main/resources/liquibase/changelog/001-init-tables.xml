@@ -23,8 +23,8 @@
                 attack_id               BIGINT,
                 severity_id             BIGINT,
                 attack_script           VARCHAR,
-                FOREIGN KEY (attack_id) REFERENCES attack(attack_id),
-                FOREIGN KEY (attack_id) REFERENCES severity(severity_id)
+                FOREIGN KEY (attack_id)   REFERENCES attack(attack_id),
+                FOREIGN KEY (severity_id) REFERENCES severity(severity_id)
             );
         </sql>
     </changeSet>
