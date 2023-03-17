@@ -13,8 +13,8 @@ public class SelectFilters {
   public SelectFilters() {
     this.orderByColumn = SEVERITY_TYPE;
     this.orderBy = SortOrdering.UNDEFINED;
-    this.selectWhereColumn = "";
-    this.selectWhereValue = "";
+    this.columnName = "";
+    this.columnValue = "";
   }
 
   /**
@@ -30,11 +30,11 @@ public class SelectFilters {
   /**
    * Выборка по какому полю
    */
-  public String selectWhereColumn;
+  public String columnName;
 
   /**
    * Выборка по полю где значение равно
    */
-  public String selectWhereValue;
+  public String columnValue;
 
 }

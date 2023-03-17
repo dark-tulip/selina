@@ -53,12 +53,13 @@ public class AttackService implements Repository<ScriptHolderDto, Long> {
   }
 
   private static String appendFilters(SelectFilters filterBy, StringBuilder sql) {
-    if (!filterBy.selectWhereColumn.isBlank() &&
-      !filterBy.selectWhereValue.isBlank()) {
+    if (!filterBy.columnName.isBlank() &&
+      !filterBy.columnValue.isBlank()) {
       sql.append(" WHERE ");
-      sql.append(filterBy.selectWhereColumn);
-      sql.append(" = ");
-      sql.append(filterBy.selectWhereValue);
+      sql.append(filterBy.columnName);
+      sql.append(" = '");
+      sql.append(filterBy.columnValue);
+      sql.append("'");
     }
 
     if (!filterBy.orderByColumn.isBlank() && !SortOrdering.UNDEFINED.equals(filterBy.orderBy)) {
