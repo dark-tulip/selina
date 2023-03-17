@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static kz.scan.selina.config.DbConfig.openConnection;
 
@@ -21,17 +22,23 @@ import static kz.scan.selina.config.DbConfig.openConnection;
 public class AttackService implements Repository<ScriptHolderDto, Long> {
 
   @Override
-  public List<ScriptHolderDto> select(SelectFilters filterBy) {
+  public List<ScriptHolderDto> selectAll(SelectFilters filterBy) {
     StringBuilder sql = new StringBuilder("SELECT\n" +
       "    script_id, attack_name, severity_type, attack_script\n" +
       "FROM attack_script\n" +
       "    LEFT JOIN attack   USING(attack_id)\n" +
       "    LEFT JOIN severity USING(severity_id) ");
 
-    appendFilters(filterBy, sql);
+    filterBy = Objects.requireNonNullElse(filterBy, new SelectFilters());
 
+    String sqlLast = appendFilters(filterBy, sql);
+
+    return executeSql(sqlLast);
+  }
+
+  private static List<ScriptHolderDto> executeSql(String sql) {
     try (Connection con = openConnection()) {
-      PreparedStatement query = con.prepareStatement(sql.toString());
+      PreparedStatement query = con.prepareStatement(sql);
       ResultSet rs = query.executeQuery();
 
       List<ScriptHolderDto> result = new ArrayList<>();
@@ -40,13 +47,12 @@ public class AttackService implements Repository<ScriptHolderDto, Long> {
       }
 
       return result;
-
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
   }
 
-  private static void appendFilters(SelectFilters filterBy, StringBuilder sql) {
+  private static String appendFilters(SelectFilters filterBy, StringBuilder sql) {
     if (!filterBy.selectWhereColumn.isBlank() &&
       !filterBy.selectWhereValue.isBlank()) {
       sql.append(" WHERE ");
@@ -61,30 +67,20 @@ public class AttackService implements Repository<ScriptHolderDto, Long> {
       sql.append(" ");
       sql.append(filterBy.orderBy);
     }
+
+    return sql.toString();
   }
 
 
   @Override
   public List<ScriptHolderDto> selectAll() {
-    try (Connection con = openConnection()) {
-      PreparedStatement query = con.prepareStatement("SELECT\n" +
-        "    script_id, attack_name, severity_type, attack_script\n" +
-        "FROM attack_script\n" +
-        "    LEFT JOIN attack   USING(attack_id)\n" +
-        "    LEFT JOIN severity USING(severity_id); ");
+    String sql = "SELECT\n" +
+      "    script_id, attack_name, severity_type, attack_script\n" +
+      "FROM attack_script\n" +
+      "    LEFT JOIN attack   USING(attack_id)\n" +
+      "    LEFT JOIN severity USING(severity_id); ";
 
-      ResultSet rs = query.executeQuery();
-
-      List<ScriptHolderDto> result = new ArrayList<>();
-      while(rs.next()) {
-        result.add(AttackDtoMapper.mapRow(rs));
-      }
-
-      return result;
-
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
+    return executeSql(sql);
   }
 
   @Override

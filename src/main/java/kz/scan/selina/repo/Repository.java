@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface Repository<T, K> {
 
-  List<T> select(SelectFilters objectId);
+  List<T> selectAll(SelectFilters objectId);
 
   List<T> selectAll();
 
