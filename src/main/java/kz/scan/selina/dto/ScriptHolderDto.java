@@ -13,7 +13,6 @@ import static kz.scan.selina.utils.RndGenerator.*;
  * Объект передачи данных для клиента. Модель собранной информации
  */
 @Data
-@Accessors
 public class ScriptHolderDto {
 
   /**

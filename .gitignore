@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 
 ### STS ###
+.allure
 .apt_generated
 .classpath
 .factorypath

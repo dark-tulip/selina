@@ -6,7 +6,6 @@ import lombok.experimental.Accessors;
 
 
 @Data
-@Accessors
 public class Attack {
 
   long attackId;

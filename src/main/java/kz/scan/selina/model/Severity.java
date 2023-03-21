@@ -8,7 +8,6 @@ import lombok.experimental.Accessors;
  * Серъезность выполненного скрипта
  */
 @Data
-@Accessors
 public class Severity {
 
   long severityId;
