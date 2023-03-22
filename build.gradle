@@ -6,19 +6,17 @@ plugins {
 	id 'io.qameta.allure' version '2.11.2'
 }
 
-
-allure {
-	autoconfigure = true
-	version = '2.21.0'  // Latest Allure Version
-
-	useJUnit5 {
-		version = '2.21.0'  // Latest Allure Version
-	}
+ext {
+	allureVersion = '2.21.0'
+	junitVersion = '5.9.2'
 }
 
-group = 'kz.scan'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+targetCompatibility = '11'
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
 
 repositories {
 	jcenter()
@@ -36,11 +34,26 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.26'
 	annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+	//implementation 'io.qameta.allure:allure-java-commons:2.21.0'
+
+	testImplementation('com.codeborne:selenide:6.12.3')
+	testImplementation("io.qameta.allure:allure-selenide:${allureVersion}")
+	testImplementation('org.slf4j:slf4j-simple:1.7.30')
+
+	testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
 
 test {
 	useJUnitPlatform()
+}
+
+allure {
+	autoconfigure = true
+	version = "${allureVersion}"
+
+	useJUnit5 {
+		version = "${allureVersion}"
+	}
 }
