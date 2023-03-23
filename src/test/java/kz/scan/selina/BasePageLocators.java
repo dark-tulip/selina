@@ -1,6 +1,5 @@
 package kz.scan.selina;
 
-
 interface BasePageLocators {
   String FILE_INPUT = "*[type='file']";
   String SUBMIT_BUTTON = "*[type='submit']";
@@ -20,4 +19,6 @@ interface BasePageLocators {
   String TIME_INPUT = "[type='time']";
   String URL_INPUT = "[type='url']";
   String WEEK_INPUT = "[type='week']";
+
+
 }

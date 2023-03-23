@@ -17,8 +17,9 @@ public class ParentJUnit {
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--remote-allow-origins=*");
 
-    Configuration.browserSize = "1280x800";
     Configuration.browserCapabilities = options;
+    Configuration.browserSize = "1280x800";
+    Configuration.headless = true;
 
     SelenideLogger.addListener("allure", new AllureSelenide());
   }

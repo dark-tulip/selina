@@ -2,9 +2,6 @@ package kz.scan.selina;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-
-
 class SelinaApplicationTests {
 
 	@Test
