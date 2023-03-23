@@ -8,9 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import static com.codeborne.selenide.Selenide.open;
+import static kz.scan.selina.configs.Environment.SCAN_URL;
 
 public class ParentJUnit {
-
 
   @BeforeAll
   public static void setUpAll() {
@@ -25,7 +25,7 @@ public class ParentJUnit {
 
   @BeforeEach
   public void setUp() {
-    open("https://www.jetbrains.com/");
+    open(SCAN_URL);
   }
 
 }

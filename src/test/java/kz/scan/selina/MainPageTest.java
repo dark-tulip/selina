@@ -1,25 +1,16 @@
 package kz.scan.selina;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import kz.scan.selina.configs.ParentJUnit;
 import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPageTest extends ParentJUnit {
-  MainPage mainPage = new MainPage();
+//  BasePageLocators basePage = new BasePageLocators();
 
   @Test
   public void search() {
-    mainPage.searchButton.click();
-
     $("[data-test='search-input']").sendKeys("Selenium");
     $("button[data-test='full-search-button']").click();
 
@@ -28,14 +19,14 @@ public class MainPageTest extends ParentJUnit {
 
 //  @Test
 //  public void toolsMenu() {
-//    mainPage.toolsMenu.click();
+//    basePage.toolsMenu.click();
 //
 //    $("div[data-test='main-submenu']").shouldBe(visible);
 //  }
 //
 //  @Test
 //  public void navigationToAllTools() {
-//    mainPage.seeAllToolsButton.click();
+//    basePage.seeAllToolsButton.click();
 //
 //    $("#products-page").shouldBe(visible);
 //
