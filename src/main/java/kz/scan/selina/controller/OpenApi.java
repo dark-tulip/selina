@@ -2,11 +2,9 @@ package kz.scan.selina.controller;
 
 import kz.scan.selina.dto.ScriptHolderDto;
 import kz.scan.selina.service.AttackService;
+import kz.scan.selina.service.ScanningService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,15 +15,23 @@ public class OpenApi {
   @Autowired
   AttackService attackService;
 
-  @GetMapping("tasks")
+  @Autowired
+  ScanningService scanningService;
+
+  @GetMapping("scripts")
   public List<ScriptHolderDto> getTasks() {
     return attackService.selectAll();
   }
 
-  @GetMapping("scripts")
+  @GetMapping("scripts/filter")
   public List<ScriptHolderDto> getTasks(SelectFilters filters) {
-    System.out.println(filters);
     return attackService.selectAll(filters);
+  }
+
+  @PostMapping("start")
+  public void startScanning() {
+
+
   }
 
   @GetMapping("test")

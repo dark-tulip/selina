@@ -1,6 +1,6 @@
-package kz.scan.selina;
+package kz.scan.selina.models;
 
-interface BasePageLocators {
+public interface BasePageLocators {
   String FILE_INPUT = "*[type='file']";
   String SUBMIT_BUTTON = "*[type='submit']";
   String PASSWORD_INPUT = "*[type='password']";
@@ -18,7 +18,6 @@ interface BasePageLocators {
   String TEXT_INPUT = "[type='text']";
   String TIME_INPUT = "[type='time']";
   String URL_INPUT = "[type='url']";
-  String WEEK_INPUT = "[type='week']";
 
 
 }
