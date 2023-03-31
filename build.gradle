@@ -33,7 +33,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
 	implementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-	runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testImplementation 'org.projectlombok:lombok:1.18.22'
+    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 	runtimeOnly 'org.liquibase:liquibase-core:4.20.0'
 
 	compileOnly 'org.projectlombok:lombok:1.18.26'

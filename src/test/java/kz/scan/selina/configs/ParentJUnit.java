@@ -19,7 +19,7 @@ public class ParentJUnit {
 
     Configuration.browserCapabilities = options;
     Configuration.browserSize = "1280x800";
-    Configuration.headless = true;
+    Configuration.headless = false;
 
     SelenideLogger.addListener("allure", new AllureSelenide());
   }
