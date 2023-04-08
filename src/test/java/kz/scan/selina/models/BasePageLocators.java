@@ -1,8 +1,6 @@
 package kz.scan.selina.models;
 
-import java.net.URL;
 import java.util.List;
-import java.util.Random;
 
 public class BasePageLocators {
   public static final String FILE_INPUT = "*[type='file']";

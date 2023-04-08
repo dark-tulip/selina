@@ -14,34 +14,18 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.NoAlertPresentException;
 
+import java.util.concurrent.Executors;
 import java.util.stream.Stream;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static kz.scan.selina.models.BasePageLocators.TEXT_INPUT;
+import static kz.scan.selina.models.BasePageLocators.FILE_INPUT;
 import static kz.scan.selina.models.BasePageLocators.getAllInputs;
 
 
 public class InputTextValidator extends ParentJUnit {
 
   private static final AttackService asp = new AttackService();
-
-  private static Stream<Arguments> argumentScript() {
-    Stream<Arguments> scripts = asp.selectAll()
-      .stream()
-      .map(x -> Arguments.of(x.attackScript));
-
-    System.out.println(scripts);
-    return scripts;
-  }
-
-  private void checkInput(ElementsCollection inputs, String sql) {
-    for (SelenideElement input : inputs) {
-      input.setValue(sql);
-      if (isAlertPresent()) {
-        throw new SqlInjection("Сработала инъекция: " + sql);
-      }
-    }
-  }
 
   @ParameterizedTest
   @MethodSource("argumentScript")
@@ -54,11 +38,9 @@ public class InputTextValidator extends ParentJUnit {
       ElementsCollection textInputs = $$(inputType);
 
       // Для каждого инпута внедрить список всех зависимых скриптов
-      checkInput(textInputs, sql);
+      checkForInjection(textInputs, sql);
     }
-
   }
-
 
   private static boolean isAlertPresent() {
     try {
@@ -66,6 +48,25 @@ public class InputTextValidator extends ParentJUnit {
       return true;
     } catch (NoAlertPresentException Ex) {
       return false;
+    }
+  }
+
+  private static Stream<Arguments> argumentScript() {
+    Stream<Arguments> scripts = asp.selectAll()
+      .stream()
+      .map(x -> Arguments.of(x.attackScript));
+
+    System.out.println(scripts);
+    return scripts;
+  }
+
+  private void checkForInjection(ElementsCollection inputs, String sql) {
+    for (SelenideElement input : inputs) {
+      input.setValue(sql);
+
+      if (isAlertPresent()) {
+        throw new SqlInjection("Сработала инъекция: " + sql);
+      }
     }
   }
 
