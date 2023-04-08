@@ -14,12 +14,10 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.NoAlertPresentException;
 
-import java.util.concurrent.Executors;
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static kz.scan.selina.models.BasePageLocators.FILE_INPUT;
+import static com.codeborne.selenide.Selenide.sleep;
 import static kz.scan.selina.models.BasePageLocators.getAllInputs;
 
 
@@ -39,7 +37,9 @@ public class InputTextValidator extends ParentJUnit {
 
       // Для каждого инпута внедрить список всех зависимых скриптов
       checkForInjection(textInputs, sql);
+
     }
+    sleep(2323023);
   }
 
   private static boolean isAlertPresent() {
