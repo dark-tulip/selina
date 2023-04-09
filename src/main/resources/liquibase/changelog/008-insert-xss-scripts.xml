@@ -1,0 +1,2257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet author="user" id="008">
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onkeyup="alert(1)" contenteditable>test</body>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onload=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onmessage=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onmousedown="alert(1)">test</body>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onmouseenter="alert(1)">test</body>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onmouseleave="alert(1)">test</body>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onmousemove="alert(1)">test</body>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onmouseout="alert(1)">test</body>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onmouseover="alert(1)">test</body>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onmouseup="alert(1)">test</body>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onpageshow=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onpaste="alert(1)" contenteditable>test</body>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onpopstate=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onresize="alert(1)">');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onscroll=alert(1)><div style=height:1000px></div><div id=x></div>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<body onwheel=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br draggable="true" ondrag="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br draggable="true" ondragend="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br draggable="true" ondragenter="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br draggable="true" ondragleave="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br draggable="true" ondragstart="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br id=x tabindex=1 onactivate=alert(1)></br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br id=x tabindex=1 onbeforeactivate=alert(1)></br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br id=x tabindex=1 onbeforedeactivate=alert(1)></br><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br id=x tabindex=1 ondeactivate=alert(1)></br><input id=y autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br id=x tabindex=1 onfocus=alert(1)></br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br id=x tabindex=1 onfocusin=alert(1)></br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onbeforecopy="alert(1)" contenteditable>test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onbeforecut="alert(1)" contenteditable>test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onbeforepaste="alert(1)" contenteditable>test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onblur=alert(1) tabindex=1 id=x></br><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onclick="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br oncontextmenu="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br oncopy="alert(1)" contenteditable>test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br oncut="alert(1)" contenteditable>test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br ondblclick="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onfocusout=alert(1) tabindex=1 id=x></br><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onkeydown="alert(1)" contenteditable>test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onkeypress="alert(1)" contenteditable>test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onkeyup="alert(1)" contenteditable>test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onmousedown="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onmouseenter="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onmouseleave="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onmousemove="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onmouseout="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onmouseover="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onmouseup="alert(1)">test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<br onpaste="alert(1)" contenteditable>test</br>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button autofocus onfocus=alert(1)>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button autofocus onfocusin=alert(1)>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button draggable="true" ondrag="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button draggable="true" ondragend="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button draggable="true" ondragenter="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button draggable="true" ondragleave="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button draggable="true" ondragstart="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button id=x tabindex=1 onactivate=alert(1)></button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button id=x tabindex=1 onbeforeactivate=alert(1)></button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button id=x tabindex=1 onbeforedeactivate=alert(1)></button><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button id=x tabindex=1 ondeactivate=alert(1)></button><input id=y autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onbeforecopy="alert(1)" contenteditable>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onbeforecut="alert(1)" contenteditable>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onbeforepaste="alert(1)" contenteditable>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onblur=alert(1) id=x></button><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onclick="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button oncopy="alert(1)" contenteditable>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button oncut="alert(1)" contenteditable>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button ondblclick="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onfocusout=alert(1) id=x></button><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onkeydown="alert(1)" contenteditable>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onkeypress="alert(1)" contenteditable>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onkeyup="alert(1)" contenteditable>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onmousedown="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onmouseenter="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onmouseleave="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onmousemove="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onmouseout="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onmouseover="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onmouseup="alert(1)">test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<button onpaste="alert(1)" contenteditable>test</button>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas draggable="true" ondrag="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas draggable="true" ondragend="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas draggable="true" ondragenter="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas draggable="true" ondragleave="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas draggable="true" ondragstart="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas id=x tabindex=1 onactivate=alert(1)></canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas id=x tabindex=1 onbeforeactivate=alert(1)></canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas id=x tabindex=1 onbeforedeactivate=alert(1)></canvas><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas id=x tabindex=1 ondeactivate=alert(1)></canvas><input id=y autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas id=x tabindex=1 onfocus=alert(1)></canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas id=x tabindex=1 onfocusin=alert(1)></canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onbeforecopy="alert(1)" contenteditable>test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onbeforecut="alert(1)" contenteditable>test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onbeforepaste="alert(1)" contenteditable>test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onblur=alert(1) tabindex=1 id=x></canvas><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onclick="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas oncontextmenu="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas oncopy="alert(1)" contenteditable>test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas oncut="alert(1)" contenteditable>test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas ondblclick="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onfocusout=alert(1) tabindex=1 id=x></canvas><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onkeydown="alert(1)" contenteditable>test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onkeypress="alert(1)" contenteditable>test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onkeyup="alert(1)" contenteditable>test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onmousedown="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onmouseenter="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onmouseleave="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onmousemove="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onmouseout="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onmouseover="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onmouseup="alert(1)">test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<canvas onpaste="alert(1)" contenteditable>test</canvas>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption draggable="true" ondrag="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption draggable="true" ondragend="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption draggable="true" ondragenter="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption draggable="true" ondragleave="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption draggable="true" ondragstart="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption id=x tabindex=1 onactivate=alert(1)></caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption id=x tabindex=1 onbeforeactivate=alert(1)></caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption id=x tabindex=1 onbeforedeactivate=alert(1)></caption><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption id=x tabindex=1 ondeactivate=alert(1)></caption><input id=y autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption id=x tabindex=1 onfocus=alert(1)></caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption id=x tabindex=1 onfocusin=alert(1)></caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onbeforecopy="alert(1)" contenteditable>test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onbeforecut="alert(1)" contenteditable>test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onbeforepaste="alert(1)" contenteditable>test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onblur=alert(1) tabindex=1 id=x></caption><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onclick="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption oncontextmenu="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption oncopy="alert(1)" contenteditable>test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption oncut="alert(1)" contenteditable>test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption ondblclick="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onfocusout=alert(1) tabindex=1 id=x></caption><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onkeydown="alert(1)" contenteditable>test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onkeypress="alert(1)" contenteditable>test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onkeyup="alert(1)" contenteditable>test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onmousedown="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onmouseenter="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onmouseleave="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onmousemove="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onmouseout="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onmouseover="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onmouseup="alert(1)">test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<caption onpaste="alert(1)" contenteditable>test</caption>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center draggable="true" ondrag="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center draggable="true" ondragend="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center draggable="true" ondragenter="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center draggable="true" ondragleave="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center draggable="true" ondragstart="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center id=x tabindex=1 onactivate=alert(1)></center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center id=x tabindex=1 onbeforeactivate=alert(1)></center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center id=x tabindex=1 onbeforedeactivate=alert(1)></center><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center id=x tabindex=1 ondeactivate=alert(1)></center><input id=y autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center id=x tabindex=1 onfocus=alert(1)></center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center id=x tabindex=1 onfocusin=alert(1)></center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onbeforecopy="alert(1)" contenteditable>test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onbeforecut="alert(1)" contenteditable>test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onbeforepaste="alert(1)" contenteditable>test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onblur=alert(1) tabindex=1 id=x></center><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onclick="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center oncontextmenu="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center oncopy="alert(1)" contenteditable>test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center oncut="alert(1)" contenteditable>test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center ondblclick="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onfocusout=alert(1) tabindex=1 id=x></center><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onkeydown="alert(1)" contenteditable>test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onkeypress="alert(1)" contenteditable>test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onkeyup="alert(1)" contenteditable>test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onmousedown="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onmouseenter="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onmouseleave="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onmousemove="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onmouseout="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onmouseover="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onmouseup="alert(1)">test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<center onpaste="alert(1)" contenteditable>test</center>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite draggable="true" ondrag="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite draggable="true" ondragend="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite draggable="true" ondragenter="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite draggable="true" ondragleave="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite draggable="true" ondragstart="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite id=x tabindex=1 onactivate=alert(1)></cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite id=x tabindex=1 onbeforeactivate=alert(1)></cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite id=x tabindex=1 onbeforedeactivate=alert(1)></cite><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite id=x tabindex=1 ondeactivate=alert(1)></cite><input id=y autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite id=x tabindex=1 onfocus=alert(1)></cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite id=x tabindex=1 onfocusin=alert(1)></cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onbeforecopy="alert(1)" contenteditable>test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onbeforecut="alert(1)" contenteditable>test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onbeforepaste="alert(1)" contenteditable>test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onblur=alert(1) tabindex=1 id=x></cite><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onclick="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite oncontextmenu="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite oncopy="alert(1)" contenteditable>test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite oncut="alert(1)" contenteditable>test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite ondblclick="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onfocusout=alert(1) tabindex=1 id=x></cite><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onkeydown="alert(1)" contenteditable>test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onkeypress="alert(1)" contenteditable>test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onkeyup="alert(1)" contenteditable>test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onmousedown="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onmouseenter="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onmouseleave="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onmousemove="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onmouseout="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onmouseover="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onmouseup="alert(1)">test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<cite onpaste="alert(1)" contenteditable>test</cite>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code draggable="true" ondrag="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code draggable="true" ondragend="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code draggable="true" ondragenter="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code draggable="true" ondragleave="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code draggable="true" ondragstart="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code id=x tabindex=1 onactivate=alert(1)></code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code id=x tabindex=1 onbeforeactivate=alert(1)></code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code id=x tabindex=1 onbeforedeactivate=alert(1)></code><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code id=x tabindex=1 ondeactivate=alert(1)></code><input id=y autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code id=x tabindex=1 onfocus=alert(1)></code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code id=x tabindex=1 onfocusin=alert(1)></code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onbeforecopy="alert(1)" contenteditable>test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onbeforecut="alert(1)" contenteditable>test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onbeforepaste="alert(1)" contenteditable>test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onblur=alert(1) tabindex=1 id=x></code><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onclick="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code oncontextmenu="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code oncopy="alert(1)" contenteditable>test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code oncut="alert(1)" contenteditable>test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code ondblclick="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onfocusout=alert(1) tabindex=1 id=x></code><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onkeydown="alert(1)" contenteditable>test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onkeypress="alert(1)" contenteditable>test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onkeyup="alert(1)" contenteditable>test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onmousedown="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onmouseenter="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onmouseleave="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onmousemove="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onmouseout="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onmouseover="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onmouseup="alert(1)">test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<code onpaste="alert(1)" contenteditable>test</code>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col draggable="true" ondrag="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col draggable="true" ondragend="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col draggable="true" ondragenter="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col draggable="true" ondragleave="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col draggable="true" ondragstart="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col id=x tabindex=1 onactivate=alert(1)></col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col id=x tabindex=1 onbeforeactivate=alert(1)></col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col id=x tabindex=1 onbeforedeactivate=alert(1)></col><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col id=x tabindex=1 ondeactivate=alert(1)></col><input id=y autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col id=x tabindex=1 onfocus=alert(1)></col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col id=x tabindex=1 onfocusin=alert(1)></col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onbeforecopy="alert(1)" contenteditable>test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onbeforecut="alert(1)" contenteditable>test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onbeforepaste="alert(1)" contenteditable>test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onblur=alert(1) tabindex=1 id=x></col><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onclick="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col oncontextmenu="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col oncopy="alert(1)" contenteditable>test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col oncut="alert(1)" contenteditable>test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col ondblclick="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onfocusout=alert(1) tabindex=1 id=x></col><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onkeydown="alert(1)" contenteditable>test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onkeypress="alert(1)" contenteditable>test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onkeyup="alert(1)" contenteditable>test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onmousedown="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onmouseenter="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onmouseleave="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onmousemove="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onmouseout="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onmouseover="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onmouseup="alert(1)">test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<col onpaste="alert(1)" contenteditable>test</col>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup draggable="true" ondrag="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup draggable="true" ondragend="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup draggable="true" ondragenter="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup draggable="true" ondragleave="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup draggable="true" ondragstart="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup id=x tabindex=1 onactivate=alert(1)></colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup id=x tabindex=1 onbeforeactivate=alert(1)></colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup id=x tabindex=1 onbeforedeactivate=alert(1)></colgroup><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup id=x tabindex=1 ondeactivate=alert(1)></colgroup><input id=y autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup id=x tabindex=1 onfocus=alert(1)></colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup id=x tabindex=1 onfocusin=alert(1)></colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onbeforecopy="alert(1)" contenteditable>test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onbeforecut="alert(1)" contenteditable>test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onbeforepaste="alert(1)" contenteditable>test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onblur=alert(1) tabindex=1 id=x></colgroup><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onclick="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup oncontextmenu="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup oncopy="alert(1)" contenteditable>test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup oncut="alert(1)" contenteditable>test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup ondblclick="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onfocusout=alert(1) tabindex=1 id=x></colgroup><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onkeydown="alert(1)" contenteditable>test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onkeypress="alert(1)" contenteditable>test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onkeyup="alert(1)" contenteditable>test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onmousedown="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onmouseenter="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onmouseleave="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onmousemove="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onmouseout="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onmouseover="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<<colgroup onmouseup="alert(1)">test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<colgroup onpaste="alert(1)" contenteditable>test</colgroup>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command draggable="true" ondrag="alert(1)">test</command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command draggable="true" ondragend="alert(1)">test</command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command draggable="true" ondragenter="alert(1)">test</command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command draggable="true" ondragleave="alert(1)">test</command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command draggable="true" ondragstart="alert(1)">test</command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command id=x tabindex=1 onactivate=alert(1)></command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command id=x tabindex=1 onbeforeactivate=alert(1)></command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command id=x tabindex=1 onbeforedeactivate=alert(1)></command><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command id=x tabindex=1 ondeactivate=alert(1)></command><input id=y autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command id=x tabindex=1 onfocus=alert(1)></command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command id=x tabindex=1 onfocusin=alert(1)></command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command onbeforecopy="alert(1)" contenteditable>test</command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command onbeforecut="alert(1)" contenteditable>test</command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command onbeforepaste="alert(1)" contenteditable>test</command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command onblur=alert(1) tabindex=1 id=x></command><input autofocus>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command onclick="alert(1)">test</command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command oncontextmenu="alert(1)">test</command>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 1, '<command oncopy="alert(1)" contenteditable>test</command>');
+            ]]>
+        </sql>
+    </changeSet>
+</databaseChangeLog>
