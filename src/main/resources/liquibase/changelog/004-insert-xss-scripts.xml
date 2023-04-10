@@ -15337,7 +15337,5 @@
             ]]>
         </sql>
 
-
-
     </changeSet>
 </databaseChangeLog>

