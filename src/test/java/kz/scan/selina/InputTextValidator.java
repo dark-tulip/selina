@@ -7,6 +7,8 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import kz.scan.selina.configs.ParentJUnit;
+import kz.scan.selina.enums.VulnerabilitySeverity;
+import kz.scan.selina.exceptions.IframeFoundException;
 import kz.scan.selina.exceptions.SqlInjection;
 import kz.scan.selina.service.AttackService;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,11 +16,14 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.NoAlertPresentException;
 
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
 import static kz.scan.selina.models.BasePageLocators.getAllInputs;
+import static kz.scan.selina.models.VulnerabilityValidators.isAlertPresent;
+import static kz.scan.selina.models.VulnerabilityValidators.isIframePresent;
 
 
 public class InputTextValidator extends ParentJUnit {
@@ -26,8 +31,8 @@ public class InputTextValidator extends ParentJUnit {
   private static final AttackService asp = new AttackService();
 
   @ParameterizedTest
-  @MethodSource("argumentScript")
-  @Feature("SQL Injection")
+  @MethodSource("runForXssCritical")
+  @Feature("XSS Инъекции")
   @Severity(SeverityLevel.CRITICAL)
   public void sqlInjection(String sql) {
 
@@ -39,34 +44,38 @@ public class InputTextValidator extends ParentJUnit {
       checkForInjection(textInputs, sql);
 
     }
-    sleep(2323023);
   }
 
-  private static boolean isAlertPresent() {
-    try {
-      Selenide.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException Ex) {
-      return false;
-    }
-  }
-
-  private static Stream<Arguments> argumentScript() {
+  private static Stream<Arguments> runForXssCritical() {
     Stream<Arguments> scripts = asp.selectAll()
       .stream()
+      .filter(x -> x.attackName.contains("XSS"))
+      .filter(x -> x.severityType == VulnerabilitySeverity.HIGH)
       .map(x -> Arguments.of(x.attackScript));
-
-    System.out.println(scripts);
     return scripts;
   }
 
-  private void checkForInjection(ElementsCollection inputs, String sql) {
-    for (SelenideElement input : inputs) {
-      input.setValue(sql);
+  public static void main(String[] args) {
+    runForXssCritical();
+  }
 
-      if (isAlertPresent()) {
-        throw new SqlInjection("Сработала инъекция: " + sql);
+  private void checkForInjection(ElementsCollection inputs, String inputText) {
+
+    for (SelenideElement input : inputs) {
+
+      if (input.isDisplayed()) {
+        input.sendKeys(inputText);
+
+        if (isAlertPresent()) {
+          throw new SqlInjection("Сработала инъекция: " + inputText);
+        }
+
+        if (isIframePresent()) {
+          throw new IframeFoundException(inputText);
+        }
+
       }
+      return;
     }
   }
 

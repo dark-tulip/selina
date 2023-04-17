@@ -3,6 +3,8 @@ package kz.scan.selina.models;
 import java.util.List;
 
 public class BasePageLocators {
+
+  public static final String BASE_INPUT = "input";
   public static final String FILE_INPUT = "*[type='file']";
   public static final String SUBMIT_BUTTON = "*[type='submit']";
   public static final String PASSWORD_INPUT = "*[type='password']";
@@ -22,7 +24,7 @@ public class BasePageLocators {
   public static final String URL_INPUT = "[type='url']";
 
   public static List<String> getAllInputs() {
-    return List.of(FILE_INPUT, SUBMIT_BUTTON, PASSWORD_INPUT,
+    return List.of(BASE_INPUT, FILE_INPUT, SUBMIT_BUTTON, PASSWORD_INPUT,
       CHECKBOX_INPUT, EMAIL_INPUT, HIDDEN_INPUT, IMAGE_INPUT,
       MONTH_INPUT, NUMBER_INPUT, RADIO_INPUT, RANGE_INPUT, RESET_BUTTON,
       SEARCH_INPUT, TEL_INPUT, TEXT_INPUT, TIME_INPUT, URL_INPUT);

@@ -40,7 +40,6 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.26'
 	annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 	testImplementation('com.codeborne:selenide:6.6.5')
 	testImplementation("io.qameta.allure:allure-selenide:${allureVersion}")
 	testImplementation('org.slf4j:slf4j-simple:2.0.5')
