@@ -8,6 +8,6 @@
     <include file="liquibase/changelog/002-insert-const-data.xml"/>
     <include file="liquibase/changelog/003-insert-scripts.xml"/>
     <include file="liquibase/changelog/004-insert-xss-scripts.xml"/>
-<!--    <include file="liquibase/changelog/005-insert-sql-injection-scripts.xml"/>-->
+    <include file="liquibase/changelog/005-insert-sql-injection-scripts.xml"/>
 
 </databaseChangeLog>
