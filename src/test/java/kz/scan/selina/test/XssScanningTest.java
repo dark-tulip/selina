@@ -1,7 +1,6 @@
-package kz.scan.selina;
+package kz.scan.selina.test;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -14,20 +13,23 @@ import kz.scan.selina.service.AttackService;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.NoAlertPresentException;
 
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.sleep;
 import static kz.scan.selina.models.BasePageLocators.getAllInputs;
 import static kz.scan.selina.models.VulnerabilityValidators.isAlertPresent;
 import static kz.scan.selina.models.VulnerabilityValidators.isIframePresent;
 
 
-public class InputTextValidator extends ParentJUnit {
+/**
+ * Класс для внедрения тестов связанных с XSS инъекциями на сайте
+ */
+public class XssScanningTest extends ParentJUnit {
 
+  /**
+   * Сервис для доступа к данным о скриптах из БД
+   */
   private static final AttackService asp = new AttackService();
 
   @ParameterizedTest
@@ -46,6 +48,11 @@ public class InputTextValidator extends ParentJUnit {
     }
   }
 
+
+  /**
+   * Провайдер данных для наиболее критичных веб уязвимостей
+   * @return scripts - возращает XSS текст attackScript для внедрения
+   */
   private static Stream<Arguments> runForXssCritical() {
     Stream<Arguments> scripts = asp.selectAll()
       .stream()
@@ -59,6 +66,12 @@ public class InputTextValidator extends ParentJUnit {
     runForXssCritical();
   }
 
+
+  /**
+   * Триггеры для проверки произошла ли уязвимость
+   * @param inputs
+   * @param inputText
+   */
   private void checkForInjection(ElementsCollection inputs, String inputText) {
 
     for (SelenideElement input : inputs) {

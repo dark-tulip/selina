@@ -6,6 +6,8 @@ import kz.scan.selina.service.ScanningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import java.util.List;
 
 @RestController
