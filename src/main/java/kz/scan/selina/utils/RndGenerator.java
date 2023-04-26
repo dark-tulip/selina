@@ -13,6 +13,16 @@ public class RndGenerator {
     return new Random().nextInt(1_000_000);
   }
 
+  /**
+   *
+   * @param from от какого числа включительно [from; to]
+   * @param to - до какого числа включительно
+   * @return рандомное число [from; to]
+   */
+  public static long rndInt(int from, int to) {
+    return new Random().nextInt(to) + from;
+  }
+
   public static String rndStr() {
     char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
