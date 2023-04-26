@@ -3807,14 +3807,14 @@
         </sql>
         <sql>
             <![CDATA[
-	INSERT INTO attack_script(attack_id, severity_id, attack_script)
-	VALUES (1, 2, '23 OR 1=1');
-	]]>
+                INSERT INTO attack_script(attack_id, severity_id, attack_script)
+                VALUES (1, 2, '23 OR 1=1');
+            ]]>
         </sql>
         <sql>
             <![CDATA[
 	INSERT INTO attack_script(attack_id, severity_id, attack_script)
-	VALUES (1, 2, '/');
+	VALUES (1, 2, '\/');
 	]]>
         </sql>
         <sql>
