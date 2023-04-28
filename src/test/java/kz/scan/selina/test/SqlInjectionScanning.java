@@ -68,4 +68,9 @@ public class SqlInjectionScanning implements InjectionBase {
 //      }
 //    }
   }
+
+  @Override
+  public boolean checkForInjection(Object data) {
+    return false;
+  }
 }
