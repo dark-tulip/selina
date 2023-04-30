@@ -23,11 +23,22 @@ public class BasePageLocators {
   public static final String TIME_INPUT = "[type='time']";
   public static final String URL_INPUT = "[type='url']";
 
-  public static List<String> getAllInputs() {
+  public static List<String> getAllInputForms() {
     return List.of(BASE_INPUT, FILE_INPUT, SUBMIT_BUTTON, PASSWORD_INPUT,
       CHECKBOX_INPUT, EMAIL_INPUT, HIDDEN_INPUT, IMAGE_INPUT,
       MONTH_INPUT, NUMBER_INPUT, RADIO_INPUT, RANGE_INPUT, RESET_BUTTON,
       SEARCH_INPUT, TEL_INPUT, TEXT_INPUT, TIME_INPUT, URL_INPUT);
+  }
+
+
+  public static List<String> getTextInputForms() {
+    return List.of(BASE_INPUT, PASSWORD_INPUT, EMAIL_INPUT, NUMBER_INPUT,
+      SEARCH_INPUT, TEL_INPUT, TEXT_INPUT,URL_INPUT);
+  }
+
+
+  public static List<String> getClickableTypes() {
+    return List.of(SUBMIT_BUTTON, CHECKBOX_INPUT, RADIO_INPUT,  RESET_BUTTON);
   }
 
 }

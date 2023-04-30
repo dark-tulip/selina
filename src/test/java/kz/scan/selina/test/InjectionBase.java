@@ -12,5 +12,4 @@ public interface InjectionBase {
 
   boolean checkForInjection(Object data);
 
-
 }

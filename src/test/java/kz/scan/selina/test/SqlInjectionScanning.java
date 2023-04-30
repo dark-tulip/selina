@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import kz.scan.selina.configs.ParentJUnit;
 import kz.scan.selina.enums.VulnerabilitySeverity;
 import kz.scan.selina.service.AttackService;
 import org.junit.jupiter.api.BeforeAll;
@@ -20,18 +21,7 @@ import static com.codeborne.selenide.Selenide.$;
 /**
  * Реализация тестов на внедрение SQL инъекций на веб-сайте
  */
-public class SqlInjectionScanning implements InjectionBase {
-
-  @BeforeAll
-  public static void setUp() {
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--remote-allow-origins=*");
-
-    Configuration.browserCapabilities = options;
-    Configuration.headless = true;
-    Configuration.webdriverLogsEnabled = false;
-  }
-
+public class SqlInjectionScanning extends ParentJUnit {
 
   private static final AttackService asp = new AttackService();
 
