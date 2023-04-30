@@ -38,21 +38,6 @@ public class ScanFor_FileInjectionTest implements InjectionBase<File> {
   }
 
 
-  /**
-   * Провайдер данных (файлов) для внедрения
-   */
-  static Stream<Arguments> getDataSet() {
-    File file = EXECUTABLE_FILES_PATH.resolve("file-injection.php").toFile();
-
-    return Stream.of(Arguments.of(file));
-  }
-
-
-  public boolean checkForInjection(File data) {
-    return false;
-  }
-
-
   @Override
   public void checkForInjection(ElementsCollection inputForms, File file) {
 

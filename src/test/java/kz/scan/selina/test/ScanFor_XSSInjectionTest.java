@@ -9,7 +9,6 @@ import io.qameta.allure.SeverityLevel;
 import kz.scan.selina.configs.ParentJUnit;
 import kz.scan.selina.enums.VulnerabilitySeverity;
 import kz.scan.selina.exceptions.XssDetection;
-import kz.scan.selina.service.AttackService;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -24,9 +23,6 @@ import static kz.scan.selina.models.FormTypes.SUBMIT;
 import static kz.scan.selina.models.VulnerabilityValidators.*;
 
 
-/**
- * Класс для внедрения тестов связанных с XSS инъекциями на сайте
- */
 public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBase<String> {
 
   @ParameterizedTest
@@ -46,16 +42,11 @@ public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBa
   }
 
   /**
-   * Сервис для доступа к данным о скриптах из БД
-   */
-  private static final AttackService asp = new AttackService();
-
-  /**
    * Провайдер данных для наиболее критичных веб уязвимостей
    * @return scripts - возращает XSS текст attackScript для внедрения
    */
   private static Stream<Arguments> prepareDataSource() {
-    return asp.selectAll()
+    return InjectionBase.getAttackService().selectAll()
       .stream()
       .filter(x -> x.attackName.contains("XSS"))
       .filter(x -> x.severityType == VulnerabilitySeverity.HIGH)
@@ -71,11 +62,11 @@ public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBa
 
       if (inputForm.is(exist)) {
 
-        if (isTextInsertable(inputForm)) {
+        if (isTextInsertableInputForm(inputForm)) {
           inputForm.setValue(dataSource);
           System.out.println("05REXIDB: Insertable input: " +" with tag:" + inputForm.getTagName() + " and name: " + inputForm.getAccessibleName());
 
-        } else if (isClickableInput(inputForm)) {
+        } else if (isClickableInputForm(inputForm)) {
           inputForm.click();
           System.out.println("XOEGB933: Clickable input: " + "with tag: " + inputForm.getAriaRole() + " and name: " + inputForm.getAccessibleName());
         }

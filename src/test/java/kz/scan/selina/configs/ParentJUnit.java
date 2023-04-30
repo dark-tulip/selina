@@ -29,7 +29,6 @@ public class ParentJUnit {
 
   @BeforeEach
   public void setUp() {
-
     open(SCAN_URL);
   }
 
