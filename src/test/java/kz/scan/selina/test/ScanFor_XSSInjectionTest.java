@@ -19,7 +19,6 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static kz.scan.selina.models.BasePageLocators.SUBMIT_BUTTON;
 import static kz.scan.selina.models.BasePageLocators.getAllInputForms;
 import static kz.scan.selina.models.FormTypes.SUBMIT;
 import static kz.scan.selina.models.VulnerabilityValidators.*;
@@ -28,7 +27,23 @@ import static kz.scan.selina.models.VulnerabilityValidators.*;
 /**
  * Класс для внедрения тестов связанных с XSS инъекциями на сайте
  */
-public class XssScanningTest extends ParentJUnit {
+public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBase<String> {
+
+  @ParameterizedTest
+  @MethodSource("prepareDataSource")
+  @Feature("XSS Инъекции")
+  @Severity(SeverityLevel.CRITICAL)
+  public void scan(String xssScript) {
+
+    // Получить список всех инпутов на сайте
+    for (var inputForm : getAllInputForms()) {
+      ElementsCollection forms = $$(inputForm);
+
+      // Для каждого инпута внедрить список всех зависимых скриптов
+      checkForInjection(forms, xssScript);
+
+    }
+  }
 
   /**
    * Сервис для доступа к данным о скриптах из БД
@@ -39,52 +54,34 @@ public class XssScanningTest extends ParentJUnit {
    * Провайдер данных для наиболее критичных веб уязвимостей
    * @return scripts - возращает XSS текст attackScript для внедрения
    */
-  private static Stream<Arguments> runForXssCritical() {
-    Stream<Arguments> scripts = asp.selectAll()
+  private static Stream<Arguments> prepareDataSource() {
+    return asp.selectAll()
       .stream()
       .filter(x -> x.attackName.contains("XSS"))
       .filter(x -> x.severityType == VulnerabilitySeverity.HIGH)
       .map(x -> Arguments.of(x.attackScript));
-    return scripts;
   }
-
-  @ParameterizedTest
-  @MethodSource("runForXssCritical")
-  @Feature("XSS Инъекции")
-  @Severity(SeverityLevel.CRITICAL)
-  public void inject(String xssScript) {
-
-    // Получить список всех инпутов на сайте
-    for (var inputType : getAllInputForms()) {
-      ElementsCollection textInputs = $$(inputType);
-
-      // Для каждого инпута внедрить список всех зависимых скриптов
-      checkForInjection(textInputs, xssScript);
-
-    }
-  }
-
 
   /**
    * Триггеры для проверки произошла ли уязвимость
    */
-  private void checkForInjection(ElementsCollection inputForms, String inputText) {
+  public void checkForInjection(ElementsCollection inputForms, String dataSource) {
 
     for (SelenideElement inputForm : inputForms) {
 
       if (inputForm.is(exist)) {
 
         if (isTextInsertable(inputForm)) {
-          inputForm.setValue(inputText);
-          System.out.println(": Insertable input: " +" with tag:" + inputForm.getTagName() + " and name: " + inputForm.getAccessibleName());
+          inputForm.setValue(dataSource);
+          System.out.println("05REXIDB: Insertable input: " +" with tag:" + inputForm.getTagName() + " and name: " + inputForm.getAccessibleName());
 
         } else if (isClickableInput(inputForm)) {
           inputForm.click();
-          System.out.println("AAA: Clickable input: " + "with tag: " + inputForm.getAriaRole() + " and name: " + inputForm.getAccessibleName());
+          System.out.println("XOEGB933: Clickable input: " + "with tag: " + inputForm.getAriaRole() + " and name: " + inputForm.getAccessibleName());
         }
 
         if (isAlertPresent()) {
-          throw new XssDetection("Сработала XSS инъекция: " + inputText);
+          throw new XssDetection("Сработала XSS инъекция: " + dataSource);
         }
       }
     }
@@ -96,8 +93,8 @@ public class XssScanningTest extends ParentJUnit {
         btn.click();
         System.out.println("Click to btn: with tag name: " + btn.getTagName() + " and name: " + btn.getAccessibleName());
 
-        if ($("html").has(Condition.matchText(inputText))) {
-          throw new XssDetection("Найдено уязвимое место для XSS инъекции: " + inputText);
+        if ($("html").has(Condition.matchText(dataSource))) {
+          throw new XssDetection("Найдено уязвимое место для XSS инъекции: " + dataSource);
 
         }
       }

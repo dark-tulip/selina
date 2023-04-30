@@ -2,13 +2,11 @@ package kz.scan.selina.test;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import kz.scan.selina.configs.ParentJUnit;
-import kz.scan.selina.enums.VulnerabilitySeverity;
-import kz.scan.selina.service.AttackService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -26,7 +24,7 @@ import static kz.scan.selina.models.BasePageLocators.FILE_INPUT;
 /**
  * Класс для провреки на внедрение файлов на сайте
  */
-public class FileInjectionTest implements InjectionBase {
+public class ScanFor_FileInjectionTest implements InjectionBase<File> {
 
 
   @BeforeAll
@@ -49,11 +47,16 @@ public class FileInjectionTest implements InjectionBase {
     return Stream.of(Arguments.of(file));
   }
 
-  @Override
-  public boolean checkForInjection(Object data) {
+
+  public boolean checkForInjection(File data) {
     return false;
   }
 
+
+  @Override
+  public void checkForInjection(ElementsCollection inputForms, File file) {
+
+  }
 
   /**
    * Метод для проверки и внедрения исполняемого файла в HTML
@@ -63,7 +66,7 @@ public class FileInjectionTest implements InjectionBase {
   @MethodSource("executableFileDataSet")
   @Severity(SeverityLevel.BLOCKER)
   @Feature("Файловая инъекция на сайте")
-  public void checkForInjection(File executableFile) {
+  public void scan(File executableFile) {
 
     SelenideElement fileInput = $(FILE_INPUT);
 

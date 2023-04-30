@@ -1,15 +1,14 @@
 package kz.scan.selina.test;
 
+import com.codeborne.selenide.ElementsCollection;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.util.stream.Stream;
 
-public interface InjectionBase {
+public interface InjectionBase<T> {
 
-  static Stream<Arguments> getDataSet() {
-    return null;
-  }
+  void scan(T dataSource);
 
-  boolean checkForInjection(Object data);
+  void checkForInjection(ElementsCollection inputForms, T dataSource);
 
 }
