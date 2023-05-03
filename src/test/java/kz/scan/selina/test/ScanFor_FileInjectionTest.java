@@ -7,6 +7,8 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import kz.scan.selina.configs.ParentJUnit;
+import kz.scan.selina.exceptions.VulnerableFileUploadedException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -16,31 +18,33 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.io.File;
 import java.util.stream.Stream;
 
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static kz.scan.selina.configs.Environment.EXECUTABLE_FILES_PATH;
 import static kz.scan.selina.models.BasePageLocators.FILE_INPUT;
+import static kz.scan.selina.models.BasePageLocators.SUBMIT_BUTTON;
 
 
 /**
  * Класс для провреки на внедрение файлов на сайте
  */
-public class ScanFor_FileInjectionTest implements InjectionBase<File> {
-
-
-  @BeforeAll
-  public static void setUp() {
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--remote-allow-origins=*");
-
-    Configuration.browserCapabilities = options;
-    Configuration.headless = true;
-    Configuration.webdriverLogsEnabled = false;
-  }
+public class ScanFor_FileInjectionTest extends ParentJUnit implements InjectionBase<File>  {
 
 
   @Override
   public void checkForInjection(ElementsCollection inputForms, File file) {
+    for (var fileInput : inputForms) {
+      if (fileInput.is(enabled)) {
+        fileInput.uploadFile(file);
+      }
 
+      if ($$(SUBMIT_BUTTON).findBy(enabled).exists()) {
+        $$(SUBMIT_BUTTON).findBy(enabled).click();
+        throw new VulnerableFileUploadedException("Vulnerable file uploaded: " + file.getName() + "to inputForm: " + fileInput.getAccessibleName());
+      }
+    }
   }
 
   /**
@@ -53,13 +57,10 @@ public class ScanFor_FileInjectionTest implements InjectionBase<File> {
   @Feature("Файловая инъекция на сайте")
   public void scan(File executableFile) {
 
-    SelenideElement fileInput = $(FILE_INPUT);
+    ElementsCollection fileInputs = $$(FILE_INPUT).filter(exist);
 
-    if (fileInput.is(Condition.exist)) {
-
-      fileInput.uploadFile(executableFile);
-
-      // todo tansh add exception trigger
+    if (fileInputs.size() > 0) {
+      checkForInjection(fileInputs, executableFile);
     }
   }
 

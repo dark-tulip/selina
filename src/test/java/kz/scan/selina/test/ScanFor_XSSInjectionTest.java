@@ -8,7 +8,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import kz.scan.selina.configs.ParentJUnit;
 import kz.scan.selina.enums.VulnerabilitySeverity;
-import kz.scan.selina.exceptions.XssDetection;
+import kz.scan.selina.exceptions.VulnerableScriptException_XssDetection;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -72,7 +72,7 @@ public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBa
         }
 
         if (isAlertPresent()) {
-          throw new XssDetection("Сработала XSS инъекция: " + dataSource);
+          throw new VulnerableScriptException_XssDetection("Сработала XSS инъекция: " + dataSource);
         }
       }
     }
@@ -85,7 +85,7 @@ public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBa
         System.out.println("Click to btn: with tag name: " + btn.getTagName() + " and name: " + btn.getAccessibleName());
 
         if ($("html").has(Condition.matchText(dataSource))) {
-          throw new XssDetection("Найдено уязвимое место для XSS инъекции: " + dataSource);
+          throw new VulnerableScriptException_XssDetection("Найдено уязвимое место для XSS инъекции: " + dataSource);
 
         }
       }

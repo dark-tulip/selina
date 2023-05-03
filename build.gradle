@@ -46,6 +46,8 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
 	testImplementation 'org.springframework:spring-test:5.3.5'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
+	implementation 'commons-httpclient:commons-httpclient:3.1'
 
 }
 
