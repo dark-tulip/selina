@@ -7,41 +7,26 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import kz.scan.selina.configs.ParentJUnit;
 import kz.scan.selina.enums.VulnerabilitySeverity;
-//import org.apache.hc.client5.http.classic.methods.HttpGet;
-//import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-//import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
-//import org.apache.hc.core5.http.HttpEntity;
-//import org.apache.hc.core5.http.HttpResponse;
-//import org.apache.hc.core5.http.ParseException;
-//import org.apache.hc.core5.http.io.HttpRequestHandler;
-//import org.apache.hc.core5.http.io.entity.EntityUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.*;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.util.Objects;
-import java.util.Set;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
 
 
 /**
@@ -60,48 +45,19 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
     urlsWithRequestParam.asDynamicIterable().forEach(x -> System.out.println("FA9H6B25 :: Defined URL: " + x.getAttribute("href")));
 
     checkForInjection(urlsWithRequestParam, dataSource);
-
   }
-
 
   @Override
   public void checkForInjection(ElementsCollection urls, String dataSource) {
-    Set<String> rawUrls = urls.asFixedIterable().stream().map(url -> removeRequestParamValue(Objects.requireNonNull(url.getAttribute("href")))).collect(Collectors.toSet());  // Нужно превратить в множество чтобы не было запросов дубликатов
 
-    for (var rawUrl : rawUrls) {
-      var url = rawUrl + dataSource;
+    // пройтись по уникальным ссылкам на сайте и добавить RequestParams
+    for (var rawUrl : getUniqUrls(urls)) {
 
-      try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
-        HttpGet httpGet = new HttpGet("https://portal.aues.kz/login/index.php");
-        URI uri = new URIBuilder(httpGet.getURI())
-          .addParameter("lang", dataSource)
-          .build();
+      // open http connection
+      sendHttpRequest(dataSource, rawUrl);
 
-        httpGet.setURI(uri);
-        CloseableHttpResponse response = client.execute(httpGet);
-
-        // Read the contents of an entity and return it as a String.
-        String content = EntityUtils.toString(response.getEntity());
-
-        if (content.contains("password")) {
-          int start = content.indexOf("password");
-          int end = start + 100;
-
-          System.out.println("AAAAA: " + content.substring(start, end));
-        }
-
-        System.out.println(content);
-      } catch (IOException e) {
-        e.printStackTrace();
-      } catch (URISyntaxException e) {
-        throw new RuntimeException(e);
-      }
-//      open(url);
-      System.out.println("SHF871JB:: " + url);
     }
-
   }
-
 
   static Stream<Arguments> prepareDataSource() {
     return InjectionBase.getAttackService().selectAll().stream().filter(x -> x.attackName.contains("SQL")).filter(x -> x.severityType == VulnerabilitySeverity.HIGH).map(x -> Arguments.of(x.attackScript)).limit(1);  // todo remove after complete
@@ -109,7 +65,110 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
 
 
   /**
-   * Удаляет значение у переданного параметра
+   * Отправить GET запрос и проанализирвать содержимое
+   * @param dataSource
+   * @param rawUrl запрос без параметров
+   */
+  private void sendHttpRequest(String dataSource, String rawUrl) {
+    try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
+
+      // construc http query
+      HttpGet httpGet = new HttpGet(rawUrl);
+      URI uri = new URIBuilder(httpGet.getURI())
+        .addParameters(constructNvps(getQueryParams(rawUrl), dataSource))
+        .build();
+
+      httpGet.setURI(uri);
+
+      // get response from website
+      CloseableHttpResponse response = client.execute(httpGet);
+
+      // Read the contents of an entity and return it as a String.
+      String content = EntityUtils.toString(response.getEntity());
+
+      analyzeContent(content);
+
+    } catch (IOException | URISyntaxException e) {
+      e.printStackTrace();
+    }
+  }
+
+
+  /**
+   * Main method to analye content todo continue logic for SQL vulnerability
+   * @param content
+   */
+  private void analyzeContent(String content) {
+
+
+    if (content.contains("password")) {
+      int start = content.indexOf("password");
+      int end = start + 100;
+    }
+
+    if (content.contains("")) {
+      int start = content.indexOf("password");
+      int end = start + 100;
+    }
+
+    if (content.contains("password")) {
+      int start = content.indexOf("password");
+      int end = start + 100;
+    }
+
+    if (content.contains("password")) {
+      int start = content.indexOf("password");
+      int end = start + 100;
+    }
+  }
+
+
+  /**
+   * получить параметры запроса
+   * @param url - необработанная строка с параметрами запроса и их значениями
+   * @return - возращает названия атрибутов отправляемых на сервер
+   */
+  public static Set<String> getQueryParams(String url) {
+    int queryParamsDelimetrIndex = url.indexOf("?");
+
+    if (queryParamsDelimetrIndex == -1) {
+      return null;
+    }
+
+    String[] paramsAndValues = url.substring(queryParamsDelimetrIndex + 1).split("&");
+    Set<String> params = new HashSet<>();
+
+    for (String param : paramsAndValues) {
+      param = param.split("=")[0];
+      if (!params.contains(param)) {
+        params.add(param);
+      }
+    }
+    return params;
+  }
+
+  /**
+   * Получить список уникальных урлов на сайте
+   * @param urls необработанные ссылки с сайта
+   * @return только уникальные ссылки
+   */
+  private static Set<String> getUniqUrls(ElementsCollection urls) {
+    return urls
+      .asFixedIterable().stream()
+      .map(url -> removeLastRequestParamValue(Objects.requireNonNull(url.getAttribute("href"))))
+      .collect(Collectors.toSet());  // Нужно превратить в множество чтобы не было запросов дубликатов
+  }
+
+
+  private static List<NameValuePair> constructNvps(Set<String> params, String dataSource) {
+    return params.stream()
+      .map(x -> new BasicNameValuePair(x, dataSource))
+      .collect(Collectors.toList());
+  }
+
+
+  /**
+   * Удаляет значение у последнего переданного параметра
    *
    * @param url - строка запроса, с параметром и его значением
    * @return - строка подзапроса с параметром и удаленным значением<p>
@@ -119,8 +178,8 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
    * https://someurl.kz/index.php?lang=
    * <p>
    */
-  private static String removeRequestParamValue(String url) {
-    return url.substring(0, url.indexOf("=") + 1);
+  private static String removeLastRequestParamValue(String url) {
+    return url.substring(0, url.lastIndexOf("=") + 1);
   }
 
 }
