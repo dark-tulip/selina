@@ -22,6 +22,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -40,9 +41,12 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
   @Severity(SeverityLevel.CRITICAL)
   @Override
   public void scan(String dataSource) {
-    ElementsCollection urlsWithRequestParam = $$("a").filter(Condition.attributeMatching("href", ".*\\?.*\\=.*"));
+    ElementsCollection urlsWithRequestParam = $$("a")
+      .filter(Condition.attributeMatching("href", ".*\\?.*\\=.*"));
 
-    urlsWithRequestParam.asDynamicIterable().forEach(x -> System.out.println("FA9H6B25 :: Defined URL: " + x.getAttribute("href")));
+    urlsWithRequestParam
+      .asDynamicIterable()
+      .forEach(x -> System.out.println("FA9H6B25 :: Defined URL: " + x.getAttribute("href")));
 
     checkForInjection(urlsWithRequestParam, dataSource);
   }
@@ -72,7 +76,7 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
   private void sendHttpRequest(String dataSource, String rawUrl) {
     try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
 
-      // construc http query
+      // construct http query
       HttpGet httpGet = new HttpGet(rawUrl);
       URI uri = new URIBuilder(httpGet.getURI())
         .addParameters(constructNvps(getQueryParams(rawUrl), dataSource))
@@ -99,7 +103,6 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
    * @param content
    */
   private void analyzeContent(String content) {
-
 
     if (content.contains("password")) {
       int start = content.indexOf("password");

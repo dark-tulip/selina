@@ -1,0 +1,84 @@
+BatchUpdateException
+DataTruncation
+SQLClientInfoException
+SQLDataException
+SQLException
+SQLFeatureNotSupportedException
+SQLIntegrityConstraintViolationException
+SQLInvalidAuthorizationSpecException
+SQLNonTransientConnectionException
+SQLNonTransientException
+SQLRecoverableException
+SQLSyntaxErrorException
+SQLTimeoutException
+SQLTransactionRollbackException
+SQLTransientConnectionException
+SQLTransientException
+SQLWarning
+Whitelabel Error Page
+Could not open a connection
+Server Error
+SqlClient
+You have an error in your SQL syntax
+MySQL
+MSSQL Server
+server version
+ORACLE
+ORA-
+host DAVID unknown
+Source: .Net SqlClient Data Provider
+System.Data.SqlClient.SqlException
+System.Data.SqlClient
+RunExecuteReader
+SqlConnection.OnError
+System.Data.SqlClient.SqlCommand.RunExecuteReader
+SQLCODE
+SQLERRM
+RAISE_APPLICATION_ERROR
+System.ServiceModel.Channels
+System.Runtime.
+Internal Server Error
+Traceback (most recent call last):
+NameError: name 'TypeError' is not defined
+Django tried
+Runtime Error
+SQLException: Network error IOException:Connection refused: connect
+Entity framework model first approach removes all table data
+Server Error in '/' Application.
+Data.SqlClient.SqlException:
+The DELETE statement conflicted with the REFERENCE constraint
+System.Data.SqlClient.TdsParser.
+Division by zero
+C:\xampp\
+Illuminate\Database\QueryException
+SQLSTATE[23000]: Integrity constraint violation:
+1062 Duplicate entry
+(SQL: insert into
+mysql_query(
+Oops, something went wrong
+java.lang.
+Fatal error
+SQLSTATE[42000]:
+Syntax error or access violation: 1064
+You have an error in your SQL syntax;
+QueryException
+Failed to obtain JDBC Connection;
+nested exception is java.sql.SQLException: null
+java.sql.SQLException: null
+is not allowed to connect to this MariaDB server
+.jdbc.exceptions.SQLError
+com.zaxxer.hikari.pool.HikariPool
+INSERT Command Denied to user
+No Error – Syntax is right. MS SQL Server Used. Proceeding.
+No Error – First column is an integer.
+Error! – Second column is not an integer.
+No Error – Second column is a string.
+Error! – Third column is not an integer. …
+Microsoft OLE DB Provider for SQL Server error '80040e07'
+Explicit conversion from data type int to image is not allowed.
+SQL Server 2000: masters..sysxlogins
+SQL Server 2005 : sys.sql_logins
+You have an error in your SQL syntax;
+check the manual that corresponds to your MySQL server version for the right syntax to use near at line
+
+
