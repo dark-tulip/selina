@@ -80,5 +80,42 @@ SQL Server 2000: masters..sysxlogins
 SQL Server 2005 : sys.sql_logins
 You have an error in your SQL syntax;
 check the manual that corresponds to your MySQL server version for the right syntax to use near at line
-
-
+AppRegistryNotReady
+ObjectDoesNotExist
+EmptyResultSet
+FullResultSet
+FieldDoesNotExist
+MultipleObjectsReturned
+SuspiciousOperation
+DisallowedHost
+DisallowedModelAdminLookup
+DisallowedModelAdminToField
+DisallowedRedirect
+InvalidSessionKey
+RequestDataTooBig
+SuspiciousFileOperation
+SuspiciousMultipartForm
+SuspiciousSession
+TooManyFieldsSent
+TooManyFilesSent
+PermissionDenied
+ViewDoesNotExist
+MiddlewareNotUsed
+FieldError
+ImproperlyConfigured
+FieldError
+ValidationError
+Error
+InterfaceError
+DatabaseError
+DataError
+OperationalError
+IntegrityError
+InternalError
+ProgrammingError
+NotSupportedError
+django.db.models
+models.RestrictedError
+TransactionManagementError
+PDOStatement
+PDOException
