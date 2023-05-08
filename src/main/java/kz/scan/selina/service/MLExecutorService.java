@@ -6,7 +6,8 @@ import java.util.List;
 public interface MLExecutorService {
 
   void setFilePath(Path absolutePath);
-  void prepareInput(List<String> inputData);
+
+  void prepareInput(String inputData);
 
   boolean predict();
 

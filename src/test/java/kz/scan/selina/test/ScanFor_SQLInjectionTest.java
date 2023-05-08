@@ -7,6 +7,8 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import kz.scan.selina.configs.ParentJUnit;
 import kz.scan.selina.enums.VulnerabilitySeverity;
+import kz.scan.selina.exceptions.VulnerableScriptException_SqlInjection;
+import kz.scan.selina.service.PythonMLExecutorService;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -18,11 +20,14 @@ import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -33,7 +38,11 @@ import static com.codeborne.selenide.Selenide.$$;
 /**
  * Реализация тестов на внедрение SQL инъекций на веб-сайте
  */
+@SpringBootTest
 public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBase<String> {
+
+  @Autowired
+  PythonMLExecutorService pythonMLExecutorService;
 
   @ParameterizedTest
   @MethodSource("prepareDataSource")
@@ -64,9 +73,13 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
   }
 
   static Stream<Arguments> prepareDataSource() {
-    return InjectionBase.getAttackService().selectAll().stream().filter(x -> x.attackName.contains("SQL")).filter(x -> x.severityType == VulnerabilitySeverity.HIGH).map(x -> Arguments.of(x.attackScript)).limit(1);  // todo remove after complete
+    return InjectionBase.getAttackService()
+      .selectAll().stream()
+      .filter(x -> x.attackName.contains("SQL"))
+      .filter(x -> x.severityType == VulnerabilitySeverity.HIGH)
+      .map(x -> Arguments.of(x.attackScript))
+      .limit(1);  // todo remove after complete
   }
-
 
   /**
    * Отправить GET запрос и проанализирвать содержимое
@@ -90,39 +103,24 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
       // Read the contents of an entity and return it as a String.
       String content = EntityUtils.toString(response.getEntity());
 
-      analyzeContent(content);
+      boolean predictResult = analyzeContent(content);
+
+      if (predictResult) {
+        throw new VulnerableScriptException_SqlInjection(dataSource);
+      }
 
     } catch (IOException | URISyntaxException e) {
       e.printStackTrace();
     }
   }
 
-
   /**
-   * Main method to analye content todo continue logic for SQL vulnerability
+   * Main method to analye content
    * @param content
    */
-  private void analyzeContent(String content) {
-
-    if (content.contains("password")) {
-      int start = content.indexOf("password");
-      int end = start + 100;
-    }
-
-    if (content.contains("")) {
-      int start = content.indexOf("password");
-      int end = start + 100;
-    }
-
-    if (content.contains("password")) {
-      int start = content.indexOf("password");
-      int end = start + 100;
-    }
-
-    if (content.contains("password")) {
-      int start = content.indexOf("password");
-      int end = start + 100;
-    }
+  private boolean analyzeContent(String content) {
+    pythonMLExecutorService.prepareInput(content);
+    return pythonMLExecutorService.predict();
   }
 
 

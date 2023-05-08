@@ -34,7 +34,9 @@ dependencies {
 	implementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
 	implementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testImplementation 'org.projectlombok:lombok:1.18.22'
-    runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+	testImplementation 'junit:junit:4.13.1'
+	testImplementation 'junit:junit:4.13.1'
+	runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 	runtimeOnly 'org.liquibase:liquibase-core:4.20.0'
 
 	compileOnly 'org.projectlombok:lombok:1.18.26'
