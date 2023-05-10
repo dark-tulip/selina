@@ -1,28 +1,19 @@
 package kz.scan.selina.test;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import kz.scan.selina.configs.ParentJUnit;
 import kz.scan.selina.exceptions.VulnerableFileUploadedException;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
-import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static kz.scan.selina.configs.Environment.EXECUTABLE_FILES_PATH;
 import static kz.scan.selina.models.BasePageLocators.FILE_INPUT;
 import static kz.scan.selina.models.BasePageLocators.SUBMIT_BUTTON;
 
@@ -30,7 +21,7 @@ import static kz.scan.selina.models.BasePageLocators.SUBMIT_BUTTON;
 /**
  * Класс для провреки на внедрение файлов на сайте
  */
-public class ScanFor_FileInjectionTest extends ParentJUnit implements InjectionBase<File>  {
+public class ScanFor_FileInjectionTest extends ParentJUnit implements InjectionBase<File> {
 
 
   @Override
@@ -49,10 +40,11 @@ public class ScanFor_FileInjectionTest extends ParentJUnit implements InjectionB
 
   /**
    * Метод для проверки и внедрения исполняемого файла в HTML
+   *
    * @param executableFile объект файла в качестве аргумента
    */
   @ParameterizedTest
-  @MethodSource("executableFileDataSet")
+  @MethodSource("executableFileDataSet")  // todo realize data provider
   @Severity(SeverityLevel.BLOCKER)
   @Feature("Файловая инъекция на сайте")
   public void scan(File executableFile) {

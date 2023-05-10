@@ -1,8 +1,13 @@
 package kz.scan.selina.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.util.Arrays;
 
@@ -14,6 +19,7 @@ public class PythonMLExecutorService implements MLExecutorService {
   private static final String scriptExecutor = "python ";
   private static String inputArguments = "";
 
+  static Logger logger = LogManager.getLogger(PythonMLExecutorService.class);
 
   @Override
   public void setFilePath(Path absolutePath) {
@@ -41,11 +47,11 @@ public class PythonMLExecutorService implements MLExecutorService {
       }
 
       if (!errors.isEmpty()) {
-        System.out.println(errors);
+        logger.error(errors);
       }
 
     } catch (IOException e) {
-      e.printStackTrace();
+      logger.error(Arrays.toString(e.getStackTrace()));
     }
 
     return false;
@@ -66,8 +72,7 @@ public class PythonMLExecutorService implements MLExecutorService {
       }
 
     } catch (IOException e) {
-      sb.append("\n::: Exception I1NEKKYW:\n")
-        .append(e.getMessage());
+      logger.error("\n::: Exception I1NEKKYW:\n", e);
     }
 
     return sb.toString().trim();  // remove last "\n"
