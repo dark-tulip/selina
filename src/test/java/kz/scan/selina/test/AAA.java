@@ -13,4 +13,5 @@ public class AAA {
     pythonMLExecutorService.prepareInput("ghjg ggjhgj");
     System.out.println(pythonMLExecutorService.predict());
   }
+
 }

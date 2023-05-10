@@ -4,12 +4,13 @@ import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.nio.file.Path;
+import java.util.Arrays;
 
 
 @Component
 public class PythonMLExecutorService implements MLExecutorService {
 
-  private static String executablePythonFile = "/Users/tansh/Desktop/selina/src/test/java/kz/scan/selina/test/hello.py ";
+  private static String executablePythonFile = "/Users/tansh/Desktop/selina/src/main/java/kz/scan/selina/model_ml/predictor.py ";
   private static final String scriptExecutor = "python ";
   private static String inputArguments = "";
 
@@ -32,47 +33,44 @@ public class PythonMLExecutorService implements MLExecutorService {
         .getRuntime()
         .exec(command);
 
-      printStdInput(p.getInputStream());
-      printStdError(p.getErrorStream());
-      return true;
+      String result = getStdOutput(p.getInputStream());
+      String errors = getStdOutput(p.getErrorStream());
+
+      if (Boolean.parseBoolean(result)) {
+        return true;
+      }
+
+      if (!errors.isEmpty()) {
+        System.out.println(errors);
+      }
 
     } catch (IOException e) {
       e.printStackTrace();
-      return false;
     }
+
+    return false;
   }
 
   /**
    * Print the output of the command
    */
-  private static void printStdInput(InputStream stdin) throws IOException {
-    System.out.println("MWMI189B:: printStdInput");
+  private static String getStdOutput(InputStream stdin) throws IOException {
+    StringBuilder sb = new StringBuilder();
 
     try (BufferedReader stdInput = new BufferedReader(new InputStreamReader(stdin))) {
+
       String s;
       while ((s = stdInput.readLine()) != null) {
-        System.out.println(s);
+        sb.append(s);
+        sb.append("\n");
       }
+
     } catch (IOException e) {
-      e.printStackTrace();
+      sb.append("\n::: Exception I1NEKKYW:\n")
+        .append(e.getMessage());
     }
 
-  }
-
-  /**
-   * Print any errors from the command
-   */
-  private static void printStdError(InputStream stdin) throws IOException {
-    System.out.println("MSO6F6DO:: printStdError");
-
-    try (BufferedReader stdError = new BufferedReader(new InputStreamReader(stdin))) {
-      String s;
-      while ((s = stdError.readLine()) != null) {
-        System.out.println(s);
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    return sb.toString().trim();  // remove last "\n"
   }
 
 }
