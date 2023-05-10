@@ -39,7 +39,9 @@ dependencies {
 	runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 	runtimeOnly 'org.liquibase:liquibase-core:4.20.0'
 
+	compileOnly 'org.tuxdude.logback.extensions:logback-colorizer:1.0.1'
 	compileOnly 'org.projectlombok:lombok:1.18.26'
+
 	annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
 	testImplementation('com.codeborne:selenide:6.6.5')
