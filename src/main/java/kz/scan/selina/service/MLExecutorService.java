@@ -1,14 +1,10 @@
 package kz.scan.selina.service;
 
-import java.nio.file.Path;
-import java.util.List;
 
 public interface MLExecutorService {
 
-  void setFilePath(Path absolutePath);
+  void setUrl(String url);
 
-  void prepareInput(String inputData);
-
-  boolean predict();
+  boolean predict(String content);
 
 }

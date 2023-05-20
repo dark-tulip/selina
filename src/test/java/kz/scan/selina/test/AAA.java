@@ -10,8 +10,7 @@ public class AAA {
 
   @Test
   public void ll() {
-    pythonMLExecutorService.prepareInput("ghjg ggjhgj");
-    pythonMLExecutorService.predict();
+    System.out.println( pythonMLExecutorService.predict("1"));
   }
 
 }

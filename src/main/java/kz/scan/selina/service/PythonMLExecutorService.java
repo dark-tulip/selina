@@ -1,82 +1,67 @@
 package kz.scan.selina.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.apachecommons.CommonsLog;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.file.Path;
-import java.util.Arrays;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.Objects;
 
 
 @Component
 @CommonsLog
 public class PythonMLExecutorService implements MLExecutorService {
 
-  private static String executablePythonFile = "/Users/tansh/Desktop/selina/src/main/java/kz/scan/selina/model_ml/predictor.py ";
-  private static final String scriptExecutor = "python ";
-  private static String inputArguments = "";
-
+  private static String REQUEST_ORIGIN = "http://0.0.0.0:8080/analyze";
 
   @Override
-  public void setFilePath(Path absolutePath) {
-    executablePythonFile = absolutePath.toAbsolutePath().toString();
+  public void setUrl(String url) {
+    REQUEST_ORIGIN = url;
   }
 
   @Override
-  public void prepareInput(String inputArgs) {
-    inputArguments = inputArgs;
-  }
+  public boolean predict(String content) {
 
-  @Override
-  public boolean predict() {
     try {
-      String command = scriptExecutor + executablePythonFile + inputArguments;
-      Process p = Runtime
-        .getRuntime()
-        .exec(command);
+      var objectMapper = new ObjectMapper();
+      String requestBody = objectMapper
+        .writeValueAsString(content);
 
-      String result = getStdOutput(p.getInputStream());
-      String errors = getStdOutput(p.getErrorStream());
+      HttpClient client = HttpClient.newHttpClient();
+      HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(REQUEST_ORIGIN))
+        .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+        .build();
 
-      if (Boolean.parseBoolean(result)) {
-        return true;
-      }
+      HttpResponse<String> response = client.send(request,
+        HttpResponse.BodyHandlers.ofString());
 
-      if (!errors.isEmpty()) {
-        log.error(errors);
-      }
+      content = response.body();
 
-    } catch (IOException e) {
-      log.error(Arrays.toString(e.getStackTrace()));
+      log.info(request.method() + ", with uri: " + request.uri());
+      log.info("response value: " + content);
+
+    } catch (InterruptedException | IOException e) {
+      log.error(e.getMessage());
+      return false;
+    }
+
+    if (Objects.equals(content, "1")) {
+      return true;
     }
 
     return false;
   }
 
-  /**
-   * Print the output of the command
-   */
-  private static String getStdOutput(InputStream stdin) throws IOException {
-    StringBuilder sb = new StringBuilder();
 
-    try (BufferedReader stdInput = new BufferedReader(new InputStreamReader(stdin))) {
+  public static void main(String[] args) {
 
-      String s;
-      while ((s = stdInput.readLine()) != null) {
-        sb.append(s);
-        sb.append("\n");
-      }
+    System.out.println( new PythonMLExecutorService().predict("1 or 1 = 1;"));
 
-    } catch (IOException e) {
-      log.error("\n::: Exception I1NEKKYW:\n", e);
-    }
-
-    return sb.toString().trim();  // remove last "\n"
   }
 
 }

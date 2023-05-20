@@ -20,3 +20,9 @@ services:
     ports:
       - "5432:5432"
 
+  python_ml:
+    image: python-ml-service
+    container_name: "python-ml-service"
+    restart: always
+    ports:
+      - "8080:8080"

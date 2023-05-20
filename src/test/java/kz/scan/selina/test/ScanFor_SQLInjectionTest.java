@@ -9,6 +9,7 @@ import kz.scan.selina.configs.ParentJUnit;
 import kz.scan.selina.enums.VulnerabilitySeverity;
 import kz.scan.selina.exceptions.VulnerableScriptException_SqlInjection;
 import kz.scan.selina.service.PythonMLExecutorService;
+import lombok.extern.apachecommons.CommonsLog;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -39,6 +40,7 @@ import static com.codeborne.selenide.Selenide.$$;
  * Реализация тестов на внедрение SQL инъекций на веб-сайте
  */
 @SpringBootTest
+@CommonsLog
 public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBase<String> {
 
   @Autowired
@@ -119,8 +121,7 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
    * @param content
    */
   private boolean analyzeContent(String content) {
-    pythonMLExecutorService.prepareInput(content);
-    return pythonMLExecutorService.predict();
+    return pythonMLExecutorService.predict(content);
   }
 
 

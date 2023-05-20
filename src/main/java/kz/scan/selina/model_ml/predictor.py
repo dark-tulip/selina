@@ -1,9 +1,7 @@
 import pickle
 import sys
-import sklearn
 
-inputContent = ' '.join(sys.argv[1:])
-
+inputContent = sys.argv[1:]
 
 tf_idf_vec = pickle.load(open('Tf-idf-sql_injection.sav', 'rb'))
 xgboost    = pickle.load(open('XGBoost_injection.sav', 'rb'))

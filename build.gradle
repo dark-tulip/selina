@@ -11,8 +11,6 @@ ext {
 	junitVersion = '5.7.1'
 }
 
-sourceCompatibility = '11'
-targetCompatibility = '11'
 
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
@@ -26,38 +24,32 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.postgresql:postgresql:42.5.4'
-	implementation 'org.liquibase:liquibase-core:4.20.0'
-	implementation 'io.qameta.allure:allure-java-commons:2.21.0'
-
 	implementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
-	implementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testImplementation 'org.projectlombok:lombok:1.18.22'
-	testImplementation 'junit:junit:4.13.1'
-	testImplementation 'junit:junit:4.13.1'
-	runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+	implementation 'org.postgresql:postgresql:42.5.4'
+
+	implementation 'org.liquibase:liquibase-core:4.20.0'
 	runtimeOnly 'org.liquibase:liquibase-core:4.20.0'
 
-	compileOnly 'org.tuxdude.logback.extensions:logback-colorizer:1.0.1'
-	compileOnly 'org.projectlombok:lombok:1.18.26'
-
-	annotationProcessor 'org.projectlombok:lombok:1.18.26'
-
-	testImplementation('com.codeborne:selenide:6.6.5')
+	implementation 'io.qameta.allure:allure-java-commons:2.21.0'
 	testImplementation("io.qameta.allure:allure-selenide:${allureVersion}")
-	testImplementation('org.slf4j:slf4j-simple:2.0.5')
+
+	implementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
+	implementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+	runtimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 	testImplementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-	testImplementation 'org.springframework:spring-test:5.3.5'
+
+	testImplementation 'junit:junit:4.13.1'
+
+	annotationProcessor 'org.projectlombok:lombok:1.18.26'
+	testImplementation 'org.projectlombok:lombok:1.18.26'
+	compileOnly 'org.projectlombok:lombok:1.18.26'
+
+	testImplementation('com.codeborne:selenide:6.6.5')
+
 	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
 	implementation 'commons-httpclient:commons-httpclient:3.1'
-	implementation 'org.python:jython:2.7.3'
-	implementation 'org.python:jython-standalone:2.7.3'
-	implementation 'org.python:jython-installer:2.7.3'
-
-//	testImplementation 'org.objectweb.proactive:programming-extension-processbuilder:13.0.2'
-
 }
 
 
