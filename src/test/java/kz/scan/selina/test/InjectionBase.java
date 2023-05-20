@@ -1,6 +1,7 @@
 package kz.scan.selina.test;
 
 import com.codeborne.selenide.ElementsCollection;
+import kz.scan.selina.exceptions.VulnerableScriptException_SqlInjection;
 import kz.scan.selina.service.AttackService;
 import org.junit.jupiter.params.provider.Arguments;
 
@@ -8,9 +9,9 @@ import java.util.stream.Stream;
 
 public interface InjectionBase<T> {
 
-  void scan(T dataSource);
+  void scan(T dataSource) throws VulnerableScriptException_SqlInjection;
 
-  void checkForInjection(ElementsCollection inputForms, T dataSource);
+  void checkForInjection(ElementsCollection inputForms, T dataSource) throws VulnerableScriptException_SqlInjection;
 
   /**
    * Сервис для доступа к данным о скриптах из БД
