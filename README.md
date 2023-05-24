@@ -5,17 +5,15 @@
 
 ### Аппаратные и системные требования
 
-Операционная система: recommend Ubuntu 20.04, Windows 10, MacOS 13.3.1
-Процессор: min 4-core
-Оперативная память: recommend 8 GB
-Свободное дисковое пространство (SSD): recommend 20 GB
+- Операционная система: recommend Ubuntu 20.04, Windows 10, MacOS 13.3.1
+- Процессор: min 4-core
+- Оперативная память: recommend 8 GB
+- Свободное дисковое пространство (SSD): not lower than 20 GB
 
 ```aidl
 JMM (Java memory model):
-Java heap size:
-2,15 GB
-Chomnium (test executor) web engine:
-500 MB
+Java heap size: NOT LOWER THAN!!! 2,15 GB
+Chomnium (test executor) web engine: 500 MB
 ```
 Docker containers:
 
@@ -39,7 +37,16 @@ Docker
 - ChromeDriver: (chromium engine 113.0.5672.162) и выше
 - GNU bash, version 3.2.57 и выше
 - git version 2.39.2 и выше
-- Python 3.10.10
+- Python 3.10.10 
+    ```python
+    # Библиотеки - обязательны минорные:
+    joblib==1.2.0
+    numpy==1.24.3
+    scikit-learn==1.0.2
+    scipy==1.10.1
+    threadpoolctl==3.1.0
+    xgboost==1.7.4
+    ```
 - IntelliJ IDEA 2022.2.1 (Ultimate Edition)
 - Pycharm 2021.2.3 (Community Edition)
 
