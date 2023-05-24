@@ -31,13 +31,14 @@ Docker
 
 ### Необходимое программное обеспечение (программные зависимости):
 
-- Docker version 20.10.22
-- Docker Compose version v2.15.1
+- Docker version 20.10.22 и выше
+- Docker Compose version v2.15.1 и выше
   - docker-image: Postgres:13.1
   - docker-image: Python:3.10
 - Java SDK 11 (JRE, JVM), Java 11 (Amazon Corretto) - Write once, run everywhere
-- ChromeDriver: (chromium engine 113.0.5672.162)
-- GNU bash, version 3.2.57 
+- ChromeDriver: (chromium engine 113.0.5672.162) и выше
+- GNU bash, version 3.2.57 и выше
+- git version 2.39.2 и выше
 - Python 3.10.10
 - IntelliJ IDEA 2022.2.1 (Ultimate Edition)
 - Pycharm 2021.2.3 (Community Edition)
