@@ -119,3 +119,10 @@ models.RestrictedError
 TransactionManagementError
 PDOStatement
 PDOException
+No Error – Syntax is right. MS SQL Server Used. Proceeding.
+No Error – First column is an integer.
+Error! – Second column is not an integer.
+No Error – Second column is a string.
+Error! – Third column is not an integer. …
+Microsoft OLE DB Provider for SQL Server error '80040e07'
+Explicit conversion from data type int to image is not allowed.

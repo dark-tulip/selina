@@ -5,6 +5,7 @@ import kz.scan.selina.dto.ScriptHolderDto;
 import kz.scan.selina.enums.SortOrdering;
 import kz.scan.selina.mapper.AttackDtoMapper;
 import kz.scan.selina.repo.Repository;
+import lombok.extern.apachecommons.CommonsLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -21,9 +22,8 @@ import static kz.scan.selina.config.DbConfig.openConnection;
 
 
 @Service
+@CommonsLog
 public class AttackService implements Repository<ScriptHolderDto, Long> {
-
-  private static final Logger logger = LoggerFactory.getLogger(AttackService.class);
 
   @Override
   public List<ScriptHolderDto> selectAll(SelectFilters filterBy) {
@@ -42,7 +42,7 @@ public class AttackService implements Repository<ScriptHolderDto, Long> {
 
   private static List<ScriptHolderDto> executeSql(String sql) {
 
-    logger.info(" :: EXECUTED SCRIPT: \n" + sql + "\n");
+    log.info(" :: EXECUTED SCRIPT: \n" + sql + "\n");
 
     try (Connection con = openConnection()) {
       PreparedStatement query = con.prepareStatement(sql);
