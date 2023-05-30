@@ -5,16 +5,18 @@ public interface ScanningService {
   /**
    * Выполняет все запущенные тесты для сканинга приложения по урлу
    */
-  void executeTests();
+  int executeTests();
 
   /**
    * Составляет Allure отчет по запущенным тестам
    */
-  void buildReport();
+  String buildReport();
 
   /**
    * Очищает историю тестов и результаты прогона прошлых тестовых выполнений
    */
-  void clearWorkspace();
+  default void clearWorkspace() {
+    // todo remove build dir
+  };
 
 }

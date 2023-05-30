@@ -1,36 +1,46 @@
 package kz.scan.selina.service;
 
 
+import kz.scan.selina.model.CommandExecutionMetadata;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ScanningServiceImpl implements ScanningService {
 
-  private static final String PROJECT_DIR = System.getProperty("user.dir");
+  @Autowired
+  CommandExecutorService commandExecutorService;
+
 
   @Override
-  public void executeTests() {
-    String executeCommand = PROJECT_DIR + "./gradlew test";
+  public int executeTests() {
+    String command = "gradlew test";
+
+    CommandExecutionMetadata commandResults = commandExecutorService.execute(command);
+
+    return commandResults.getStatusCode();
+
   }
 
   @Override
-  public void buildReport() {
-    String executeCommand = PROJECT_DIR  + "./gradlew allureServe";
+  public String buildReport() {
+    String command = "gradlew allureServe";
 
+    CommandExecutionMetadata commandResults = commandExecutorService.execute(command);
+
+    return commandResults.getOutput();
   }
 
-  @Override
-  public void clearWorkspace() {
-    String executeCommand = "./gradlew allureServe";
-
-  }
 
   public static void main(String[] args) {
-    ScanningService scanningService = new ScanningServiceImpl();
+    ScanningServiceImpl scanningService = new ScanningServiceImpl();
+
+    scanningService.commandExecutorService = new CommandExecutorServiceImpl();
+
+    scanningService.executeTests();
 
     scanningService.buildReport();
 
-    System.out.println();
-
   }
+
 }

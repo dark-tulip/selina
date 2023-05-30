@@ -9,7 +9,6 @@ import static kz.scan.selina.mapper.DbColumnsDefinition.SEVERITY_TYPE;
 @Data
 public class SelectFilters {
 
-
   public SelectFilters() {
     this.orderByColumn = SEVERITY_TYPE;
     this.orderBy = SortOrdering.UNDEFINED;

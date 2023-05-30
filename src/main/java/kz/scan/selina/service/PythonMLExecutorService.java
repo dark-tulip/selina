@@ -58,10 +58,12 @@ public class PythonMLExecutorService implements MLExecutorService {
   }
 
 
+  /**
+   * Example of usage
+   * @param args - string to be predicted
+   */
   public static void main(String[] args) {
-
     System.out.println( new PythonMLExecutorService().predict("1 or 1 = 1;"));
-
   }
 
 }

@@ -13,14 +13,7 @@ public class SelinaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SelinaApplication.class, args);
-		System.out.println(rndAttackDto());
-
-		Attack attackName = new Attack();
-		attackName.setAttackId(RndGenerator.rndInt());
-		attackName.setAttackName(RndGenerator.rndStr());
-
 		runMigration();
-
 	}
 
 }

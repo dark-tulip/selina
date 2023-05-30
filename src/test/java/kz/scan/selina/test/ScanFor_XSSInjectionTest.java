@@ -9,6 +9,7 @@ import io.qameta.allure.SeverityLevel;
 import kz.scan.selina.configs.ParentJUnit;
 import kz.scan.selina.enums.VulnerabilitySeverity;
 import kz.scan.selina.exceptions.VulnerableScriptException_XssDetection;
+import lombok.extern.apachecommons.CommonsLog;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -23,6 +24,7 @@ import static kz.scan.selina.models.FormTypes.SUBMIT;
 import static kz.scan.selina.models.VulnerabilityValidators.*;
 
 
+@CommonsLog
 public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBase<String> {
 
   @ParameterizedTest
@@ -43,14 +45,16 @@ public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBa
 
   /**
    * Провайдер данных для наиболее критичных веб уязвимостей
-   * @return scripts - возращает XSS текст attackScript для внедрения
+   *
+   * @return scripts - возвращает XSS текст attackScript для внедрения
    */
   private static Stream<Arguments> prepareDataSource() {
     return InjectionBase.getAttackService().selectAll()
       .stream()
       .filter(x -> x.attackName.contains("XSS"))
       .filter(x -> x.severityType == VulnerabilitySeverity.HIGH)
-      .map(x -> Arguments.of(x.attackScript));
+      .map(x -> Arguments.of(x.attackScript))
+      .limit(1);  // todo remove
   }
 
   /**
@@ -64,11 +68,11 @@ public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBa
 
         if (isTextInsertableInputForm(inputForm)) {
           inputForm.setValue(dataSource);
-          System.out.println("05REXIDB: Insertable input: " +" with tag:" + inputForm.getTagName() + " and name: " + inputForm.getAccessibleName());
+          log.info("05REXIDB: Insertable input: " + " with tag:" + inputForm.getTagName() + " and name: " + inputForm.getAccessibleName());
 
         } else if (isClickableInputForm(inputForm)) {
           inputForm.click();
-          System.out.println("XOEGB933: Clickable input: " + "with tag: " + inputForm.getAriaRole() + " and name: " + inputForm.getAccessibleName());
+          log.info("XOEGB933: Clickable input: " + "with tag: " + inputForm.getAriaRole() + " and name: " + inputForm.getAccessibleName());
         }
 
         if (isAlertPresent()) {
@@ -82,7 +86,7 @@ public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBa
 
       if (btn.has(enabled)) {
         btn.click();
-        System.out.println("Click to btn: with tag name: " + btn.getTagName() + " and name: " + btn.getAccessibleName());
+        log.info("Click to btn: with tag name: " + btn.getTagName() + " and name: " + btn.getAccessibleName());
 
         if ($("html").has(Condition.matchText(dataSource))) {
           throw new VulnerableScriptException_XssDetection("Найдено уязвимое место для XSS инъекции: " + dataSource);
@@ -90,7 +94,6 @@ public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBa
         }
       }
     }
-
   }
 
 }

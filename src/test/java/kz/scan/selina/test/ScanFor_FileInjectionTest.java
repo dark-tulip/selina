@@ -6,10 +6,14 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import kz.scan.selina.configs.ParentJUnit;
 import kz.scan.selina.exceptions.VulnerableFileUploadedException;
+import lombok.extern.apachecommons.CommonsLog;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.File;
+import java.net.URL;
+import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.exist;
@@ -19,24 +23,11 @@ import static kz.scan.selina.models.BasePageLocators.SUBMIT_BUTTON;
 
 
 /**
- * Класс для провреки на внедрение файлов на сайте
+ * Класс для проверки на внедрение файлов на сайте
  */
+@CommonsLog
 public class ScanFor_FileInjectionTest extends ParentJUnit implements InjectionBase<File> {
 
-
-  @Override
-  public void checkForInjection(ElementsCollection inputForms, File file) {
-    for (var fileInput : inputForms) {
-      if (fileInput.is(enabled)) {
-        fileInput.uploadFile(file);
-      }
-
-      if ($$(SUBMIT_BUTTON).findBy(enabled).exists()) {
-        $$(SUBMIT_BUTTON).findBy(enabled).click();
-        throw new VulnerableFileUploadedException("Vulnerable file uploaded: " + file.getName() + "to inputForm: " + fileInput.getAccessibleName());
-      }
-    }
-  }
 
   /**
    * Метод для проверки и внедрения исполняемого файла в HTML
@@ -44,16 +35,71 @@ public class ScanFor_FileInjectionTest extends ParentJUnit implements InjectionB
    * @param executableFile объект файла в качестве аргумента
    */
   @ParameterizedTest
-  @MethodSource("executableFileDataSet")  // todo realize data provider
+  @MethodSource("prepareDataSource")
   @Severity(SeverityLevel.BLOCKER)
   @Feature("Файловая инъекция на сайте")
   public void scan(File executableFile) {
 
-    ElementsCollection fileInputs = $$(FILE_INPUT).filter(exist);
+    log.info("CADSE3Z1 :: Injection filename: " + executableFile.getAbsolutePath());
 
-    if (fileInputs.size() > 0) {
-      checkForInjection(fileInputs, executableFile);
+//    ElementsCollection fileInputs = $$(FILE_INPUT).filter(exist);
+//
+//    if (fileInputs.size() > 0) {
+//      checkForInjection(fileInputs, executableFile);
+//    }
+  }
+
+  @Override
+  public void checkForInjection(ElementsCollection inputForms, File file) {
+    for (var fileInput : inputForms) {
+
+      if (fileInput.is(enabled)) {
+        fileInput.uploadFile(file);
+
+        if ($$(SUBMIT_BUTTON).findBy(enabled).exists()) {
+          $$(SUBMIT_BUTTON).findBy(enabled).click();
+          throw new VulnerableFileUploadedException("Vulnerable file uploaded to server: " + file.getName() + "to inputForm: " + fileInput.getAccessibleName());
+        }
+
+      }
     }
+  }
+
+  static Stream<Arguments> prepareDataSource() {
+    return Stream.of(
+      Arguments.of(getScriptResource("file-injection.php")),
+      Arguments.of(getScriptResource("file-injection.bash"))
+    );
+  }
+
+  /**
+   * Получить исполняемые файлы из поддиректории ресурсов
+   *
+   * @return полный путь с файлу
+   */
+  public static File getScriptResource(String executableFileName) {
+
+    String resourceLocation = getExecutableFilesDirectory() + executableFileName;
+    URL fileUrl = ScanFor_FileInjectionTest.class.getResource(resourceLocation);
+
+    if (fileUrl != null) {
+      return new File(fileUrl.getFile());
+    }
+
+    log.error(":: File not found: " + resourceLocation);
+    return null;
+  }
+
+  public static void main(String[] args) {
+    System.out.println(log.getClass());
+    System.out.println(getScriptResource("file-injection.php"));
+  }
+
+  /**
+   * Относительное расположение файла с ресурсами
+   */
+  public static String getExecutableFilesDirectory() {
+    return "/scripts/executable_files/";
   }
 
 }

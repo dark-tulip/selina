@@ -6,8 +6,6 @@ import kz.scan.selina.enums.SortOrdering;
 import kz.scan.selina.mapper.AttackDtoMapper;
 import kz.scan.selina.repo.Repository;
 import lombok.extern.apachecommons.CommonsLog;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -49,7 +47,7 @@ public class AttackService implements Repository<ScriptHolderDto, Long> {
       ResultSet rs = query.executeQuery();
 
       List<ScriptHolderDto> result = new ArrayList<>();
-      while(rs.next()) {
+      while (rs.next()) {
         result.add(AttackDtoMapper.mapRow(rs));
       }
 

@@ -18,10 +18,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -49,18 +46,16 @@ import static com.codeborne.selenide.Selenide.$$;
 public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBase<String> {
 
   // region Attributes
-  private static final Logger LOGGER = LogManager.getLogger(InjectionBase.class);
 
   @Autowired
   PythonMLExecutorService pythonMLExecutorService;
   // endregion
 
-  @Disabled
+  @Disabled // todo remove after complete env
   @ParameterizedTest
   @MethodSource("prepareDataSource")
   @Feature("SQL Инъекции")
   @Severity(SeverityLevel.CRITICAL)
-  @Override
   public void scan(String dataSource) throws VulnerableScriptException_SqlInjection {
     ElementsCollection urlsWithRequestParam = $$("a")
       .filter(Condition.attributeMatching("href", ".*\\?.*\\=.*"));
@@ -115,14 +110,14 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
       // get response from website
       CloseableHttpResponse response = client.execute(httpGet);
 
-      LOGGER.info("GET: " + httpGet.getURI());
+      log.info("GET: " + httpGet.getURI());
       // Read the contents of an entity and return it as a String.
       String content = EntityUtils.toString(response.getEntity());
 
       boolean predictResult = analyzeContent(content);
 
       if (predictResult) {
-        LOGGER.error("NHDMXRSE :: Found vulnerability during analyzing content:\n" + content);
+        log.error("NHDMXRSE :: Found vulnerability during analyzing content:\n" + content);
         throw new VulnerableScriptException_SqlInjection(dataSource);
       }
 
@@ -177,7 +172,7 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
       .asFixedIterable().stream()
       .map(url -> removeLastRequestParamValue(Objects.requireNonNull(url.getAttribute("href"))))
       .collect(Collectors.toSet());  // Нужно превратить в множество чтобы не было запросов дубликатов
-    uniqUrls.forEach(x -> LOGGER.info(x));
+    uniqUrls.forEach(x -> log.info(x));
 
     return uniqUrls;
   }
