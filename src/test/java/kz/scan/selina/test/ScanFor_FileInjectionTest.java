@@ -16,7 +16,6 @@ import java.net.URL;
 import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Condition.enabled;
-import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selenide.$$;
 import static kz.scan.selina.models.BasePageLocators.FILE_INPUT;
 import static kz.scan.selina.models.BasePageLocators.SUBMIT_BUTTON;
@@ -42,11 +41,8 @@ public class ScanFor_FileInjectionTest extends ParentJUnit implements InjectionB
 
     log.info("CADSE3Z1 :: Injection filename: " + executableFile.getAbsolutePath());
 
-//    ElementsCollection fileInputs = $$(FILE_INPUT).filter(exist);
-//
-//    if (fileInputs.size() > 0) {
-//      checkForInjection(fileInputs, executableFile);
-//    }
+    checkForInjection($$(FILE_INPUT), executableFile);
+
   }
 
   @Override

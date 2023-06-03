@@ -43,11 +43,6 @@ public class RndGenerator {
     }
 
     return sb.toString();
-//    return Stream.of(new Character[length])
-//      .map(ch -> chars[new Random().nextInt(chars.length)])
-//      .collect(Collectors.toList())
-//      .to
-//      .toString();
   }
 
 

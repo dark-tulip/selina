@@ -20,11 +20,12 @@ class CommandExecutorServiceImpl implements CommandExecutorService {
     PROJECT_DIR = projectDir;
   }
 
-  public CommandExecutionMetadata execute(String cmd) {
+  public CommandExecutionMetadata execute(String... cmd) {
 
     ProcessBuilder processBuilder = new ProcessBuilder();
-    processBuilder.command("bash", "-c", cmd);
-    processBuilder.directory(new File(PROJECT_DIR));
+    processBuilder
+      .command(cmd)
+      .directory(new File(PROJECT_DIR));
 
     StringBuilder output = new StringBuilder();
     int exitCode = 1;
@@ -41,7 +42,7 @@ class CommandExecutorServiceImpl implements CommandExecutorService {
 
       exitCode = process.waitFor();
 
-      log.warn("Exited with error code : " + exitCode);
+      log.warn("H621EE8W :: Exited with error code : " + exitCode);
 
 
     } catch (IOException | InterruptedException e) {
@@ -56,7 +57,7 @@ class CommandExecutorServiceImpl implements CommandExecutorService {
 
   public static void main(String[] args) {
     CommandExecutorServiceImpl commandExecutorService = new CommandExecutorServiceImpl();
-    System.out.println(commandExecutorService.execute("./"));
+    System.out.println(commandExecutorService.execute("./gradlew",  "test"));
   }
 
 }

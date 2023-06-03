@@ -4,10 +4,11 @@ import kz.scan.selina.dto.ScriptHolderDto;
 import kz.scan.selina.service.AttackService;
 import kz.scan.selina.service.ScanningService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import java.util.List;
 
 @RestController
@@ -32,7 +33,6 @@ public class OpenApi {
 
   @PostMapping("start")
   public void startScanning() {
-
 
   }
 

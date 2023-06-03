@@ -11,11 +11,6 @@ ext {
 	junitVersion = '5.7.1'
 }
 
-
-tasks.withType(JavaCompile) {
-	options.encoding = 'UTF-8'
-}
-
 repositories {
 	jcenter()
 	mavenCentral()
@@ -54,7 +49,6 @@ dependencies {
 	testCompileClasspath('commons-logging:commons-logging:1.2')
 
 	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
-	implementation 'commons-httpclient:commons-httpclient:3.1'
 }
 
 

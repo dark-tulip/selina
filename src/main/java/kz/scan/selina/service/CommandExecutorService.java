@@ -14,7 +14,7 @@ interface CommandExecutorService {
    * @param cmd - строковое представление исполяемой bash команды
    * @return command execution output
    */
-  CommandExecutionMetadata execute(String cmd);
+  CommandExecutionMetadata execute(String... cmd);
 
 
 }
