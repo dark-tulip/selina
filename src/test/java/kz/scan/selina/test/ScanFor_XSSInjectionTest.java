@@ -53,8 +53,7 @@ public class ScanFor_XSSInjectionTest extends ParentJUnit implements InjectionBa
       .stream()
       .filter(x -> x.attackName.contains("XSS"))
       .filter(x -> x.severityType == VulnerabilitySeverity.HIGH)
-      .map(x -> Arguments.of(x.attackScript))
-      .limit(1);  // todo remove
+      .map(x -> Arguments.of(x.attackScript));  // todo remove
   }
 
   /**

@@ -51,7 +51,7 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
   PythonMLExecutorService pythonMLExecutorService;
   // endregion
 
-  @Disabled // todo remove after complete env
+//  @Disabled // todo remove after complete env
   @ParameterizedTest
   @MethodSource("prepareDataSource")
   @Feature("SQL Инъекции")
@@ -86,8 +86,7 @@ public class ScanFor_SQLInjectionTest extends ParentJUnit implements InjectionBa
       .selectAll().stream()
       .filter(x -> x.attackName.contains("SQL"))
       .filter(x -> x.severityType == VulnerabilitySeverity.HIGH)
-      .map(x -> Arguments.of(x.attackScript))
-      .limit(1);  // todo remove after complete
+      .map(x -> Arguments.of(x.attackScript));  // todo remove after complete
   }
 
   /**
