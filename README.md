@@ -1,6 +1,6 @@
 # Selina Vulnerability Scanner 
 #### Diploma project
-
+Просто тестовый проект
 ---
 
 ### Аппаратные и системные требования
@@ -10,7 +10,7 @@
 - Оперативная память: recommend 8 GB
 - Свободное дисковое пространство (SSD): not lower than 20 GB
 
-```aidl
+```bash
 JMM (Java memory model):
 Java heap size: NOT LOWER THAN!!! 2,15 GB
 Chomnium (test executor) web engine: 500 MB
@@ -64,7 +64,7 @@ Docker
 docker build . -t python-ml-service # to create image
 ```
 Дополнительно:
-```aidl
+```bash
 # Поднимите контейнер сервиса на порту 8080
 # docker run -it -p 8080:8081 --name service3 python-ml-service
 # Зайти в контейнер можно следующей командой
